@@ -79,7 +79,6 @@ class Organization(db.Model, SerializerMixin):
     ## validations
 
 
-
 class Transport(db.Model, SerializerMixin):
 
     __tablename__ = 'transports'
