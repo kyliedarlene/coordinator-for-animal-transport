@@ -19,7 +19,7 @@ if __name__ == '__main__':
         Pet.query.delete()
         Organization.query.delete()
 
-        print("db data deleted...")
+        print("db data deleted")
 
         new_pets = [
             Pet(
@@ -188,3 +188,23 @@ if __name__ == '__main__':
 
         db.session.add_all(new_pets)
         db.session.commit()
+        print("seeded pets")
+
+        new_orgs = [
+            Organization(
+                name = "CAWS",
+                city = "Salt Lake City"
+            ),
+            Organization(
+                name = "Rescue Rovers",
+                city = "Salt Lake City"
+            ),
+            Organization(
+                name = "C.A.R.E.",
+                city = "Provo"
+            )
+        ]
+
+        db.session.add_all(new_orgs)
+        db.session.commit()
+        print("seeded organizations")
