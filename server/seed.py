@@ -178,11 +178,43 @@ if __name__ == '__main__':
                 notes = "easily spooked"
             ),
             Pet(
-                name = "Kobold",
+                name = "Ziggy",
                 type = "iguana",
                 size = "small",
                 sex = "M",
                 flight_risk = "low"
+            ),
+            Pet(
+                name = "Lanny",
+                type = "bunny",
+                size = "tiny",
+                sex = "F"            
+            ),
+            Pet(
+                name = "Owlbear Cub",
+                type = "dog",
+                size = "XL",
+                breed = "Saint Bernard",
+                sex = "F",
+                flight_risk = "low"
+            ),
+            Pet(
+                name = "Kiskar",
+                type = "dog",
+                size = "large",
+                breed = "border collie",
+                color = "blue merle",
+                sex = "F",
+                notes = "bonded with Twig"
+            ),
+            Pet(
+                name = "Twig",
+                type = "dog",
+                size = "tiny",
+                breed = "chihuahua",
+                color = "brown",
+                sex = "F",
+                notes = "bonded with Kiskar"
             )
         ]
 
