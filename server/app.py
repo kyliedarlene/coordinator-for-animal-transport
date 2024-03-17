@@ -17,7 +17,7 @@ from models import *
 def index():
     return '<h1>Project Server</h1>'
 
-##### PETS #####
+######## PETS ########
 
 @app.route('/pets')
 def pets():
@@ -28,7 +28,7 @@ def pets():
     )
     return response
 
-@app.route('/pets/<int:id>', methods = ['GET', 'DELETE'])
+@app.route('/pets/<int:id>', methods = ['GET', 'PATCH', 'DELETE'])
 def pets_by_id(id):
     pet = Pet.query.filter(Pet.id == id).first()
 
@@ -43,13 +43,30 @@ def pets_by_id(id):
                 pet.to_dict(),
                 200
             )
+        elif request.method == 'PATCH':
+            try:
+                form_data = request.get_json()
+
+                for attr in form_data:
+                    setattr(pet, attr, form_data[attr])
+
+                db.session.commit()
+                response = make_response(
+                    pet.to_dict(), 
+                    202
+                )
+            except ValueError:
+                response = make_response(
+                    { "errors": ["validation errors"] }, 
+                    400
+                )
         elif request.method == 'DELETE':
             db.session.delete(pet)
             db.session.commit()
             response = make_response(
                 { 
                     "delete_successful": True, 
-                    "message": "Review deleted." 
+                    "message": f"{pet.name} deleted." 
                 },
                 200
             )
