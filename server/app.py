@@ -43,6 +43,16 @@ def pets_by_id(id):
                 pet.to_dict(),
                 200
             )
+        elif request.method == 'DELETE':
+            db.session.delete(pet)
+            db.session.commit()
+            response = make_response(
+                { 
+                    "delete_successful": True, 
+                    "message": "Review deleted." 
+                },
+                200
+            )
 
     return response
 
