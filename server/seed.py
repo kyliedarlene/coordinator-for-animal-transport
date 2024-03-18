@@ -18,6 +18,7 @@ if __name__ == '__main__':
         Transport.query.delete()
         Pet.query.delete()
         Organization.query.delete()
+        Transport.query.delete()
 
         print("db data deleted")
 
@@ -240,3 +241,18 @@ if __name__ == '__main__':
         db.session.add_all(new_orgs)
         db.session.commit()
         print("seeded organizations")
+
+        new_transports = [
+            Transport(
+                title = "Nov UT Transport",
+                date = "11/02/23"
+            ),
+            Transport(
+                title = "April UT Transport",
+                date = "04/10/24"
+            )
+        ]
+
+        db.session.add_all(new_transports)
+        db.session.commit()
+        print("seeded transports")
