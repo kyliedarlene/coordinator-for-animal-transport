@@ -169,6 +169,7 @@ class TransportPet(db.Model, SerializerMixin):
 
     ## validations
 
+### TransportOrganization ###
 
 class TransportOrganization(db.Model, SerializerMixin):
 
@@ -176,6 +177,12 @@ class TransportOrganization(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     is_receiving = db.Column(db.Boolean, default=True)
+    transport_id = db.Column(db.Integer, 
+                             db.ForeignKey('transports.id'), 
+                             nullable=False)
+    organization_id = db.Column(db.Integer, 
+                             db.ForeignKey('organizations.id'), 
+                             nullable=False)
 
     ## relationships
 
