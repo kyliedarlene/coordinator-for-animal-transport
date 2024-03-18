@@ -16,7 +16,7 @@ from models import *
 def index():
     return '<h1>Project Server</h1>'
 
-######## PETS ########
+### pets ###
 
 @app.route('/pets', methods = ['GET', 'POST'])
 def pets():
@@ -100,7 +100,7 @@ def pets_by_id(id):
             )
     return response
 
-######## Organizations ########
+### organizations ###
 
 @app.route('/organizations', methods = ['GET', 'POST'])
 def organizations():
@@ -138,6 +138,21 @@ def organizations():
                 { "errors": ['Please try again.'] }, 
                 400
             )
+    return response
+
+### transports ###
+
+@app.route('/transports', methods = ['GET', 'POST']) ## add later: POST
+def transports():
+    transports = [transport.to_dict() for transport in Transport.query.all()]
+
+    if request.method == 'GET':
+        response = make_response(
+            transports,
+            200
+        )
+    elif request.method == 'POST':
+        pass
     return response
 
 if __name__ == '__main__':
