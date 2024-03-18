@@ -109,6 +109,9 @@ class Transport(db.Model, SerializerMixin):
     date = db.Column(db.String) # add later: change to datetime ?
 
     ## relationships
+    # transport_pets = db.relationship('TransportPets'), back_populates='transport')
+
+
 
     ## validations
 
@@ -122,9 +125,9 @@ class Transport(db.Model, SerializerMixin):
             date: {self.date}
         """
 
-### TransportPets ###
+### TransportPet ###
 
-class TransportPets(db.Model, SerializerMixin):
+class TransportPet(db.Model, SerializerMixin):
 
     __tablename__ = 'transport_pets'
 
@@ -143,16 +146,27 @@ class TransportPets(db.Model, SerializerMixin):
                              nullable=True)
  
     ## relationships
+    # transport = db.relationship('Transport', back_populates='transport_pets')
+    # pet = db.relationship('Pet', back_populates='transport_pets')
+    # sending_org = db.relationship('Organization', back_populates='transport_pets')
+    # receiving_org = db.relationship('Organization', back_populates='transport_pets')
+
+    # ## serialization rules
+    # serialize_rules = ('-transport.transport_pets',
+    #                    '-pet.transport_pets',
+    #                    '-sending_org.transport_pets',
+    #                    '-receiving_org.transport_pets'
+    #                    ,)
 
     ## validations
-    
 
-class TransportOrganizations(db.Model, SerializerMixin):
+
+class TransportOrganization(db.Model, SerializerMixin):
 
     __tablename__ = 'transport_organizations'
 
     id = db.Column(db.Integer, primary_key=True)
-    is_sending = db.Column(db.Boolean)
+    is_receiving = db.Column(db.Boolean, default=True)
 
     ## relationships
 
