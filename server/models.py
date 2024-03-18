@@ -4,6 +4,8 @@ from sqlalchemy.orm import validates
 
 from config import db
 
+### Pet ###
+
 class Pet(db.Model, SerializerMixin):
     __tablename__ = 'pets'
 
@@ -79,11 +81,21 @@ class Organization(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     city = db.Column(db.String)
-    # add additional address fields
+    # add later: additional address fields
 
     ##relationships
 
     ## validations
+
+    ## __repr__
+
+    def __repr__(self): 
+        return f"""
+        Organization 
+            id: {self.id}
+            name: {self.name}
+            city: {self.city}
+        """
 
 
 class Transport(db.Model, SerializerMixin):
