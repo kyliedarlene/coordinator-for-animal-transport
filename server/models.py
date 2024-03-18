@@ -10,24 +10,24 @@ class Pet(db.Model, SerializerMixin):
     __tablename__ = 'pets'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    type = db.Column(db.String)
-    size = db.Column(db.String)
-    breed = db.Column(db.String)
-    color = db.Column(db.String)
-    sex = db.Column(db.String)
-    flight_risk = db.Column(db.String)
-    notes = db.Column(db.String)
+    name = db.Column(db.String, nullable=False)
+    type = db.Column(db.String, nullable=False)
+    size = db.Column(db.String, nullable=False)
+    breed = db.Column(db.String, nullable=True, default="unspecified")
+    color = db.Column(db.String, nullable=True, default="unspecified")
+    sex = db.Column(db.String, nullable=True, default="unspecified")
+    flight_risk = db.Column(db.String, nullable=True, default="unspecified")
+    notes = db.Column(db.String, nullable=True)
 
     ## relationships
 
-    # ## validations
+    ## validations
     # @validates('name')
     # def validate_name(self, key, value):
-    #     # if value == None:
-    #     #     raise ValueError("Name cannot be empty")
-    #     if not 1 <= len(value) <= 30:
-    #         raise ValueError("Name must be between 1 and 30 characters inclusive")
+    #     if not value:
+    #         raise ValueError("Name cannot be empty")
+    #     # if not 1 <= len(value) <= 30:
+    #     #     raise ValueError("Name must be between 1 and 30 characters inclusive")
     #     return value
     
     # @validates('size')
