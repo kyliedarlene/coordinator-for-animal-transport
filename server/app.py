@@ -199,6 +199,29 @@ def transport_by_id(id):
         #     )
     return response
 
+@app.route('/transports/<int:id>/pets')
+def pets_in_transport(id):
+    transport = Transport.query.filter(Transport.id == id).first()
+
+    if not transport:
+        response = make_response(
+            {"error": "Transport not found"}, 
+            404
+        )
+    else:
+        pets = []
+        for transport_pet in transport.transport_pets:
+            pet = transport_pet.pet
+            pet_dict = pet.to_dict(rules=('-transport_pets',))
+            pets.append(pet_dict)
+        
+        response = make_response (
+            pets,
+            200
+        )
+        
+    return response
+
 ### transport_pets ###
 
 @app.route('/transport_pets', methods = ['GET', 'POST']) ## add later: POST
