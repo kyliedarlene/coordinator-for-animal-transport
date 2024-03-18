@@ -122,16 +122,30 @@ class Transport(db.Model, SerializerMixin):
             date: {self.date}
         """
 
+### TransportPets ###
+
 class TransportPets(db.Model, SerializerMixin):
 
     __tablename__ = 'transport_pets'
 
     id = db.Column(db.Integer, primary_key=True)
-
+    transport_id = db.Column(db.Integer, 
+                             db.ForeignKey('transports.id'), 
+                             nullable=False)
+    pet_id = db.Column(db.Integer, 
+                             db.ForeignKey('pets.id'), 
+                             nullable=False)
+    sending_org_id = db.Column(db.Integer, 
+                             db.ForeignKey('organizations.id'), 
+                             nullable=False)
+    receiving_org_id = db.Column(db.Integer, 
+                             db.ForeignKey('organizations.id'), 
+                             nullable=True)
+ 
     ## relationships
 
     ## validations
-
+    
 
 class TransportOrganizations(db.Model, SerializerMixin):
 
