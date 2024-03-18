@@ -36,11 +36,11 @@ class Pet(db.Model, SerializerMixin):
             raise ValueError("Size must be one of the following: 'tiny', 'small', 'medium', 'large', 'huge'")
         return value
     
-    # @validates('sex')
-    # def validate_sex(self, key, value):
-    #     if value.upper() not in {'M', 'F', 'unknown'}:
-    #         raise ValueError("Sex must be 'M' or 'F'")
-    #     return value
+    @validates('sex')
+    def validate_sex(self, key, value):
+        if value not in {'M', 'F', 'unspecified'}:  ## improvement (low-priority): make 'm' and 'f' case-insensitive
+            raise ValueError("Sex must be one of the following: 'M', 'F', 'unspecified'")
+        return value
     
     # @validates('flight_risk')
     # def validate_flight_risk(self, key, value):
