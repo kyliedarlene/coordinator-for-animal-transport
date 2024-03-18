@@ -33,25 +33,9 @@ def pets():
             form_data = request.get_json()
 
             new_pet = Pet()
-
-            print(new_pet)
-
             for attr in dir(Pet):
                 if attr in form_data:
                     setattr(new_pet, attr, form_data[attr])
-
-            print(new_pet)
-
-            # new_pet = Pet(
-            #     name = form_data['name'],
-            #     type = form_data['type'],
-            #     size = form_data['size'],
-            #     breed = form_data['breed'],
-            #     color = form_data['color'],
-            #     sex = form_data['sex'],
-            #     flight_risk = form_data['flight_risk'],
-            #     notes = form_data['notes']
-            # )
 
             db.session.add(new_pet)
             db.session.commit()
@@ -60,9 +44,15 @@ def pets():
                 new_pet.to_dict(),
                 201
             )
-        except:
+        except ValueError as e:
             response = make_response(
-                { "errors": ["validation errors"] }, 
+                { "errors": [str(e)] }, 
+                400
+            )
+        except: ## improvement (low-priority): make non-Value error messages more informative 
+                    # How to catch IntegrityError for NULL constraint violation?
+            response = make_response(
+                { "errors": ['Please try again.'] }, 
                 400
             )
     return response

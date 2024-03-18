@@ -21,14 +21,14 @@ class Pet(db.Model, SerializerMixin):
 
     ## relationships
 
-    ## validations
-    # @validates('name')
-    # def validate_name(self, key, value):
-    #     if not value:
-    #         raise ValueError("Name cannot be empty")
-    #     # if not 1 <= len(value) <= 30:
-    #     #     raise ValueError("Name must be between 1 and 30 characters inclusive")
-    #     return value
+    # validations
+    @validates('name')
+    def validate_name(self, key, value):
+        if not value:
+            raise ValueError("Name is required.")
+        elif not 1 <= len(value) <= 30:
+            raise ValueError("Name must be between 1 and 30 characters.")
+        return value
     
     # @validates('size')
     # def validate_sex(self, key, value):
