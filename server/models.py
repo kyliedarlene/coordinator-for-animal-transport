@@ -11,7 +11,7 @@ class Pet(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    type = db.Column(db.String, nullable=False)
+    species = db.Column(db.String, nullable=False)
     size = db.Column(db.String, nullable=False)
     breed = db.Column(db.String, nullable=True, default="unspecified")
     color = db.Column(db.String, nullable=True, default="unspecified")

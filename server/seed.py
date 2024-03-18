@@ -24,7 +24,7 @@ if __name__ == '__main__':
         new_pets = [
             Pet(
                 name = "Panda",
-                type = "dog",
+                species = "dog",
                 size = "medium",
                 breed = "heeler",
                 color = "tri",
@@ -34,7 +34,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Scout",
-                type = "dog",
+                species = "dog",
                 size = "medium",
                 breed = "heeler",
                 color = "red",
@@ -43,7 +43,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Ruby",
-                type = "dog",
+                species = "dog",
                 size = "small",
                 breed = "pittie mix",
                 color = "red & white",
@@ -53,7 +53,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Bats",
-                type = "dog",
+                species = "dog",
                 size = "tiny",
                 breed = "chihuahua",
                 color = "black",
@@ -61,7 +61,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Montana",
-                type = "dog",
+                species = "dog",
                 size = "medium",
                 breed = "heeler",
                 color = "tri",
@@ -70,7 +70,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Willow",
-                type = "dog",
+                species = "dog",
                 size = "large",
                 breed = "border collie",
                 color = "b&w",
@@ -78,7 +78,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Indy",
-                type = "dog",
+                species = "dog",
                 size = "small",
                 breed = "heeler",
                 color = "red",
@@ -86,7 +86,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Sen",
-                type = "dog",
+                species = "dog",
                 size = "medium",
                 breed = "husky x",
                 color = "grey",
@@ -96,7 +96,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Beck",
-                type = "dog",
+                species = "dog",
                 size = "medium",
                 breed = "heeler",
                 color = "tri",
@@ -104,7 +104,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Bowie",
-                type = "dog",
+                species = "dog",
                 size = "medium",
                 breed = "heeler",
                 color = "black & white",
@@ -112,7 +112,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Nova",
-                type = "dog",
+                species = "dog",
                 size = "small",
                 breed = "kelpie x",
                 color = "tri",
@@ -120,7 +120,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Shae",
-                type = "dog",
+                species = "dog",
                 size = "small",
                 breed = "lab x whippet",
                 color = "blonde",
@@ -130,7 +130,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Rocket",
-                type = "dog",
+                species = "dog",
                 size = "medium",
                 breed = "heeler",
                 color = "tri",
@@ -138,7 +138,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Dexter",
-                type = "dog",
+                species = "dog",
                 size = "large",
                 breed = "pitbull x",
                 color = "grey",
@@ -148,7 +148,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Toast",
-                type = "cat",
+                species = "cat",
                 size = "tiny",
                 breed = "siamese x",
                 sex = "M",
@@ -157,20 +157,20 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Maverick",
-                type = "cat",
+                species = "cat",
                 size = "tiny",
                 sex = "M"
             ),
             Pet(
                 name = "Bruce",
-                type = "cat",
+                species = "cat",
                 size = "small",
                 color = "black",
                 sex = "M"
             ),
             Pet(
                 name = "Beansie",
-                type = "cat",
+                species = "cat",
                 size = "tiny",
                 color = "grey & white",
                 sex = "F",
@@ -179,20 +179,20 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Ziggy",
-                type = "iguana",
+                species = "iguana",
                 size = "small",
                 sex = "M",
                 flight_risk = "low"
             ),
             Pet(
                 name = "Lanny",
-                type = "bunny",
+                species = "bunny",
                 size = "tiny",
                 sex = "F"            
             ),
             Pet(
                 name = "Owlbear Cub",
-                type = "dog",
+                species = "dog",
                 size = "XL",
                 breed = "Saint Bernard",
                 sex = "F",
@@ -200,7 +200,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Kiskar",
-                type = "dog",
+                species = "dog",
                 size = "large",
                 breed = "border collie",
                 color = "blue merle",
@@ -209,7 +209,7 @@ if __name__ == '__main__':
             ),
             Pet(
                 name = "Twig",
-                type = "dog",
+                species = "dog",
                 size = "tiny",
                 breed = "chihuahua",
                 color = "brown",
