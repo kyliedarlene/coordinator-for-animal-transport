@@ -155,5 +155,20 @@ def transports():
         pass
     return response
 
+### transport_pets ###
+
+@app.route('/transport_pets', methods = ['GET', 'POST']) ## add later: POST
+def transport_pets():
+    transport_pets = [transport_pet.to_dict() for transport_pet in TransportPet.query.all()]
+
+    if request.method == 'GET':
+        response = make_response(
+            transport_pets,
+            200
+        )
+    elif request.method == 'POST':
+        pass
+    return response
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
