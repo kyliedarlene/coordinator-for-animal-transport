@@ -133,8 +133,8 @@ class Transport(db.Model, SerializerMixin):
     ## association proxies
     pets = association_proxy('transport_pets', 'pet',
                              creator=lambda pet_obj: TransportPet(pet=pet_obj))
-    # organizations = association_proxy('transport_organizations', 'organization',
-    #                          creator=lambda org_obj: TransportPet(organization=org_obj))
+    organizations = association_proxy('transport_organizations', 'organization',
+                             creator=lambda org_obj: TransportPet(organization=org_obj))
 
     ## validations
 
