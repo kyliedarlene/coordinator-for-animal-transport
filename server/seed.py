@@ -14,13 +14,18 @@ if __name__ == '__main__':
     # fake = Faker()
     with app.app_context():
         print("Starting seed...")
-        # Seed code goes here!
+
+        # delete db data
         Transport.query.delete()
         Pet.query.delete()
         Organization.query.delete()
         Transport.query.delete()
+        TransportPet.query.delete()
+        TransportOrganization.query.delete()
 
         print("db data deleted")
+
+        ### pets ###
 
         new_pets = [
             Pet(
@@ -223,6 +228,8 @@ if __name__ == '__main__':
         db.session.commit()
         print("seeded pets")
 
+        ### organizations ###
+
         new_orgs = [
             Organization(
                 name = "CAWS",
@@ -242,6 +249,8 @@ if __name__ == '__main__':
         db.session.commit()
         print("seeded organizations")
 
+        ### transports ###
+
         new_transports = [
             Transport(
                 title = "Nov UT Transport",
@@ -256,3 +265,32 @@ if __name__ == '__main__':
         db.session.add_all(new_transports)
         db.session.commit()
         print("seeded transports")
+
+        ### transport_pets ###
+
+        new_transport_pets = [
+            TransportPet(
+                transport_id = 1,
+                pet_id = 22,
+                receiving_org_id = 1
+            ),
+            TransportPet(
+                transport_id = 1,
+                pet_id = 23,
+                receiving_org_id = 1
+            ),
+            TransportPet(
+                transport_id = 2,
+                pet_id = 1,
+                receiving_org_id = 2
+            ),
+            TransportPet(
+                transport_id = 2,
+                pet_id = 2,
+                receiving_org_id = 3
+            )
+        ]
+
+        db.session.add_all(new_transport_pets)
+        db.session.commit()
+        print("seeded transport pets")

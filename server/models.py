@@ -147,9 +147,6 @@ class TransportPet(db.Model, SerializerMixin):
     pet_id = db.Column(db.Integer, 
                              db.ForeignKey('pets.id'), 
                              nullable=False)
-    sending_org_id = db.Column(db.Integer, 
-                             db.ForeignKey('organizations.id'), 
-                             nullable=False)
     receiving_org_id = db.Column(db.Integer, 
                              db.ForeignKey('organizations.id'), 
                              nullable=True)

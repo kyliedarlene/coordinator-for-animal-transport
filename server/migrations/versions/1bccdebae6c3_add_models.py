@@ -1,8 +1,8 @@
 """add models
 
-Revision ID: 3712575a9538
+Revision ID: 1bccdebae6c3
 Revises: 
-Create Date: 2024-03-17 18:48:12.421117
+Create Date: 2024-03-18 00:47:10.780227
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '3712575a9538'
+revision = '1bccdebae6c3'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,7 +27,7 @@ def upgrade():
     op.create_table('pets',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column('type', sa.String(), nullable=False),
+    sa.Column('species', sa.String(), nullable=False),
     sa.Column('size', sa.String(), nullable=False),
     sa.Column('breed', sa.String(), nullable=True),
     sa.Column('color', sa.String(), nullable=True),
@@ -38,7 +38,7 @@ def upgrade():
     )
     op.create_table('transport_organizations',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('is_sending', sa.Boolean(), nullable=True),
+    sa.Column('is_receiving', sa.Boolean(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('transport_pets',
