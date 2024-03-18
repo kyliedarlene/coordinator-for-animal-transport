@@ -294,3 +294,28 @@ if __name__ == '__main__':
         db.session.add_all(new_transport_pets)
         db.session.commit()
         print("seeded transport pets")
+
+        ### transport_organizations ###
+
+        new_transport_organizations = [
+            TransportOrganization(
+                transport_id = 1,
+                organization_id = 1,
+            ),
+            TransportOrganization(
+                transport_id = 1,
+                organization_id = 2,
+            ),
+            TransportOrganization(
+                transport_id = 2,
+                organization_id = 2,
+            ),
+            TransportOrganization(
+                transport_id = 2,
+                organization_id = 3,
+            )
+        ]
+
+        db.session.add_all(new_transport_organizations)
+        db.session.commit()
+        print("seeded transport organizations")

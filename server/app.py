@@ -20,7 +20,7 @@ def index():
 
 @app.route('/pets', methods = ['GET', 'POST'])
 def pets():
-    pets = [pet.to_dict() for pet in Pet.query.all()]
+    pets = [pet.to_dict(rules=('-transport_pets',)) for pet in Pet.query.all()]
 
     if request.method == 'GET':
         response = make_response(
@@ -68,7 +68,7 @@ def pet_by_id(id):
     else:
         if request.method == 'GET':
             response = make_response (
-                pet.to_dict(),
+                pet.to_dict(rules=('-transport_pets',)),
                 200
             )
         elif request.method == 'PATCH':
@@ -104,7 +104,9 @@ def pet_by_id(id):
 
 @app.route('/organizations', methods = ['GET', 'POST'])
 def organizations():
-    organizations = [organization.to_dict() for organization in Organization.query.all()]
+    organizations = [organization.to_dict(rules=('-transport_pets', '-transport_organizations')) 
+                     for organization 
+                     in Organization.query.all()]
 
     if request.method == 'GET':
         response = make_response(
@@ -144,7 +146,8 @@ def organizations():
 
 @app.route('/transports', methods = ['GET', 'POST']) ## add later: POST
 def transports():
-    transports = [transport.to_dict() for transport in Transport.query.all()]
+    transports = [transport.to_dict(rules=('-transport_pets', '-transport_organizations',)) 
+                  for transport in Transport.query.all()]
 
     if request.method == 'GET':
         response = make_response(
@@ -167,7 +170,7 @@ def transport_by_id(id):
     else:
         if request.method == 'GET':
             response = make_response (
-                transport.to_dict(),
+                transport.to_dict(rules=('-transport_pets', '-transport_organizations',)),
                 200
             )
         # elif request.method == 'PATCH':
@@ -212,7 +215,7 @@ def pets_in_transport(id):
         pets = []
         for transport_pet in transport.transport_pets:
             pet = transport_pet.pet
-            pet_dict = pet.to_dict(rules=('-transport_pets',))
+            pet_dict = pet.to_dict(rules=('-transport_pets', '-transport_organizations',))
             pets.append(pet_dict)
         
         response = make_response (
@@ -224,18 +227,40 @@ def pets_in_transport(id):
 
 ### transport_pets ###
 
-@app.route('/transport_pets', methods = ['GET', 'POST']) ## add later: POST
-def transport_pets():
-    transport_pets = [transport_pet.to_dict() for transport_pet in TransportPet.query.all()]
+# @app.route('/transport_pets', methods = ['GET', 'POST']) ## add later: POST
+# def transport_pets():
+#     transport_pets = [transport_pet.to_dict(rules=('-transport', '-pet', 'receiving_org',)) 
+#                       for transport_pet 
+#                       in TransportPet.query.all()]
 
-    if request.method == 'GET':
-        response = make_response(
-            transport_pets,
-            200
-        )
-    elif request.method == 'POST':
-        pass
-    return response
+#     if request.method == 'GET':
+#         response = make_response(
+#             transport_pets,
+#             200
+#         )
+#     elif request.method == 'POST':
+#         pass
+#     return response
+
+# if __name__ == '__main__':
+#     app.run(port=5555, debug=True)
+
+### transport_organizations ###
+
+# @app.route('/transport_organizations', methods = ['GET', 'POST']) ## add later: POST
+# def transport_organizations():
+#     transport_organizations = [transport_organization.to_dict() 
+#                                for transport_organization 
+#                                in TransportOrganization.query.all()]
+
+#     if request.method == 'GET':
+#         response = make_response(
+#             transport_organizations,
+#             200
+#         )
+#     elif request.method == 'POST':
+#         pass
+#     return response
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

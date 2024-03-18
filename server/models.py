@@ -44,7 +44,7 @@ class Pet(db.Model, SerializerMixin):
         return value
     
     @validates('size')
-    def validate_sex(self, key, value):
+    def validate_size(self, key, value):
         if value.lower() not in {'tiny', 'small', 'medium', 'large', 'huge'}:
             raise ValueError("Size must be one of the following: 'tiny', 'small', 'medium', 'large', 'huge'")
         return value
@@ -68,7 +68,7 @@ class Pet(db.Model, SerializerMixin):
         Pet 
             id: {self.id}
             name: {self.name}
-            type: {self.type}
+            type: {self.species}
             size: {self.size}
             breed: {self.breed}
             color: {self.color}
@@ -90,9 +90,13 @@ class Organization(db.Model, SerializerMixin):
 
     ## relationships
     transport_pets = db.relationship('TransportPet', back_populates='receiving_org')
+    transport_organizations = db.relationship('TransportOrganization', 
+                                   back_populates='organization')
 
     ## serialization rules
-    serialize_rules = ('-transport_pets.receiving_org',)
+    serialize_rules = ('-transport_pets.receiving_org',
+                       '-transport_organizations.organization',)
+    # serialize_rules = ('-transport_pets.receiving_org',)
 
     ## validations
 
@@ -118,10 +122,13 @@ class Transport(db.Model, SerializerMixin):
 
     ## relationships
     transport_pets = db.relationship('TransportPet', back_populates='transport')
-    transport_organizations = db.relationship('TransportOrganization', back_populates='transport')
+    transport_organizations = db.relationship('TransportOrganization', 
+                                              back_populates='transport')
 
     ## serialization rules
-    serialize_rules = ('-transport_pets.transport', '-transport_organizations.transport',)
+    serialize_rules = ('-transport_pets.transport', 
+                       '-transport_organizations.transport',)
+    # serialize_rules = ('-transport_pets.transport',)
 
     ## association proxies
     pets = association_proxy('transport_pets', 'pet',
@@ -186,8 +193,10 @@ class TransportOrganization(db.Model, SerializerMixin):
                              nullable=False)
 
     ## relationships
-    transport = db.relationship('Transport', back_populates='transport_organizations')
-    organization = db.relationship('Organization', back_populates='transport_organizations')
+    transport = db.relationship('Transport', 
+                                back_populates='transport_organizations')
+    organization = db.relationship('Organization', 
+                                   back_populates='transport_organizations')
 
     ## serialization rules
     serialize_rules = ('-transport.transport_organizations',
