@@ -57,7 +57,7 @@ def pets():
     return response
 
 @app.route('/pets/<int:id>', methods = ['GET', 'PATCH', 'DELETE'])
-def pets_by_id(id):
+def pet_by_id(id):
     pet = Pet.query.filter(Pet.id == id).first()
 
     if not pet:
@@ -153,6 +153,50 @@ def transports():
         )
     elif request.method == 'POST':
         pass
+    return response
+
+@app.route('/transports/<int:id>', methods = ['GET', 'PATCH', 'DELETE'])
+def transport_by_id(id):
+    transport = Transport.query.filter(Transport.id == id).first()
+
+    if not transport:
+        response = make_response(
+            {"error": "Transport not found"}, 
+            404
+        )
+    else:
+        if request.method == 'GET':
+            response = make_response (
+                transport.to_dict(),
+                200
+            )
+        # elif request.method == 'PATCH':
+        #     try:
+        #         form_data = request.get_json()
+
+        #         for attr in form_data:
+        #             setattr(pet, attr, form_data[attr])
+
+        #         db.session.commit()
+        #         response = make_response(
+        #             pet.to_dict(), 
+        #             202
+        #         )
+        #     except ValueError:
+        #         response = make_response(
+        #             { "errors": ["validation errors"] }, 
+        #             400
+        #         )
+        # elif request.method == 'DELETE':
+        #     db.session.delete(pet)
+        #     db.session.commit()
+        #     response = make_response(
+        #         { 
+        #             "delete_successful": True, 
+        #             "message": f"{pet.name} deleted." 
+        #         },
+        #         200
+        #     )
     return response
 
 ### transport_pets ###
