@@ -20,6 +20,10 @@ class Pet(db.Model, SerializerMixin):
     notes = db.Column(db.String, nullable=True)
 
     ## relationships
+    transport_pets = db.relationship('TransportPet', back_populates='pet')
+
+    ## serialization rules
+    serialize_rules = ('-transport_pets.pet',)
 
     ## validations
 
@@ -85,6 +89,10 @@ class Organization(db.Model, SerializerMixin):
     # add later: additional address fields
 
     ## relationships
+    transport_pets = db.relationship('TransportPet', back_populates='receiving_org')
+
+    ## serialization rules
+    serialize_rules = ('-transport_pets.receiving_org',)
 
     ## validations
 
@@ -109,9 +117,10 @@ class Transport(db.Model, SerializerMixin):
     date = db.Column(db.String) # add later: change to datetime ?
 
     ## relationships
-    # transport_pets = db.relationship('TransportPets'), back_populates='transport')
+    transport_pets = db.relationship('TransportPet', back_populates='transport')
 
-
+    ## serialization rules
+    serialize_rules = ('-transport_pets.transport',)
 
     ## validations
 
@@ -145,18 +154,15 @@ class TransportPet(db.Model, SerializerMixin):
                              db.ForeignKey('organizations.id'), 
                              nullable=True)
  
-    ## relationships
-    # transport = db.relationship('Transport', back_populates='transport_pets')
-    # pet = db.relationship('Pet', back_populates='transport_pets')
-    # sending_org = db.relationship('Organization', back_populates='transport_pets')
-    # receiving_org = db.relationship('Organization', back_populates='transport_pets')
+    # relationships
+    transport = db.relationship('Transport', back_populates='transport_pets')
+    pet = db.relationship('Pet', back_populates='transport_pets')
+    receiving_org = db.relationship('Organization', back_populates='transport_pets')
 
-    # ## serialization rules
-    # serialize_rules = ('-transport.transport_pets',
-    #                    '-pet.transport_pets',
-    #                    '-sending_org.transport_pets',
-    #                    '-receiving_org.transport_pets'
-    #                    ,)
+    ## serialization rules
+    serialize_rules = ('-transport.transport_pets',
+                       '-pet.transport_pets',
+                       '-receiving_org.transport_pets',)
 
     ## validations
 
