@@ -118,9 +118,10 @@ class Transport(db.Model, SerializerMixin):
 
     ## relationships
     transport_pets = db.relationship('TransportPet', back_populates='transport')
+    transport_organizations = db.relationship('TransportOrganization', back_populates='transport')
 
     ## serialization rules
-    serialize_rules = ('-transport_pets.transport',)
+    serialize_rules = ('-transport_pets.transport', '-transport_organizations.transport',)
 
     ## association proxies
     pets = association_proxy('transport_pets', 'pet',
@@ -157,7 +158,7 @@ class TransportPet(db.Model, SerializerMixin):
                              db.ForeignKey('organizations.id'), 
                              nullable=True)
  
-    # relationships
+    ## relationships
     transport = db.relationship('Transport', back_populates='transport_pets')
     pet = db.relationship('Pet', back_populates='transport_pets')
     receiving_org = db.relationship('Organization', back_populates='transport_pets')
@@ -185,5 +186,11 @@ class TransportOrganization(db.Model, SerializerMixin):
                              nullable=False)
 
     ## relationships
+    transport = db.relationship('Transport', back_populates='transport_organizations')
+    organization = db.relationship('Organization', back_populates='transport_organizations')
+
+    ## serialization rules
+    serialize_rules = ('-transport.transport_organizations',
+                       '-organization.transport_organizations',)
 
     ## validations
