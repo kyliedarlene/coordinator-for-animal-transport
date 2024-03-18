@@ -73,6 +73,7 @@ class Pet(db.Model, SerializerMixin):
             notes: {self.notes}
         """
 
+### Organization ###
 
 class Organization(db.Model, SerializerMixin):
 
@@ -83,7 +84,7 @@ class Organization(db.Model, SerializerMixin):
     city = db.Column(db.String)
     # add later: additional address fields
 
-    ##relationships
+    ## relationships
 
     ## validations
 
@@ -97,6 +98,7 @@ class Organization(db.Model, SerializerMixin):
             city: {self.city}
         """
 
+### Transport ###
 
 class Transport(db.Model, SerializerMixin):
 
@@ -104,11 +106,21 @@ class Transport(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
-    date = db.Column(db.String) # change to datetime ?
+    date = db.Column(db.String) # add later: change to datetime ?
 
     ## relationships
 
     ## validations
+
+    ## __repr__
+
+    def __repr__(self): 
+        return f"""
+        Transport 
+            id: {self.id}
+            title: {self.title}
+            date: {self.date}
+        """
 
 class TransportPets(db.Model, SerializerMixin):
 
