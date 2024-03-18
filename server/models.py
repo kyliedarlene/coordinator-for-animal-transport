@@ -4,8 +4,6 @@ from sqlalchemy.orm import validates
 
 from config import db
 
-# Models go here!
-
 class Pet(db.Model, SerializerMixin):
     __tablename__ = 'pets'
 

@@ -8,10 +8,9 @@ from flask_restful import Resource
 
 # Local imports
 from config import app, db, api
-# Add your model imports
 from models import *
 
-# Views go here!
+# Views
 
 @app.route('/')
 def index():
@@ -99,7 +98,46 @@ def pets_by_id(id):
                 },
                 200
             )
+    return response
 
+######## Organizations ########
+
+@app.route('/organizations', methods = ['GET', 'POST'])
+def organizations():
+    organizations = [organization.to_dict() for organization in Organization.query.all()]
+
+    if request.method == 'GET':
+        response = make_response(
+            organizations,
+            200
+        )
+    # elif request.method == 'POST':
+    #     try: 
+    #         form_data = request.get_json()
+
+    #         new_pet = Pet()
+    #         for attr in dir(Pet):
+    #             if attr in form_data:
+    #                 setattr(new_pet, attr, form_data[attr])
+
+    #         db.session.add(new_pet)
+    #         db.session.commit()
+
+    #         response = make_response(
+    #             new_pet.to_dict(),
+    #             201
+    #         )
+    #     except ValueError as e:
+    #         response = make_response(
+    #             { "errors": [str(e)] }, 
+    #             400
+    #         )
+    #     except: ## improvement (low-priority): make non-Value error messages more informative 
+    #                 # How to catch IntegrityError for NULL constraint violation?
+    #         response = make_response(
+    #             { "errors": ['Please try again.'] }, 
+    #             400
+    #         )
     return response
 
 if __name__ == '__main__':
