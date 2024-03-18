@@ -30,11 +30,11 @@ class Pet(db.Model, SerializerMixin):
             raise ValueError("Name must be between 1 and 30 characters.")
         return value
     
-    # @validates('size')
-    # def validate_sex(self, key, value):
-    #     if value.lower() not in {'tiny', 'small', 'medium', 'large', 'huge'}:
-    #         raise ValueError("Size must be one of the following: 'tiny', 'small', 'medium', 'large', 'huge'")
-    #     return value
+    @validates('size')
+    def validate_sex(self, key, value):
+        if value.lower() not in {'tiny', 'small', 'medium', 'large', 'huge'}:
+            raise ValueError("Size must be one of the following: 'tiny', 'small', 'medium', 'large', 'huge'")
+        return value
     
     # @validates('sex')
     # def validate_sex(self, key, value):
