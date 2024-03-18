@@ -111,33 +111,33 @@ def organizations():
             organizations,
             200
         )
-    # elif request.method == 'POST':
-    #     try: 
-    #         form_data = request.get_json()
+    elif request.method == 'POST':
+        try: 
+            form_data = request.get_json()
 
-    #         new_pet = Pet()
-    #         for attr in dir(Pet):
-    #             if attr in form_data:
-    #                 setattr(new_pet, attr, form_data[attr])
+            new_organization = Organization()
+            for attr in dir(Organization):
+                if attr in form_data:
+                    setattr(new_organization, attr, form_data[attr])
 
-    #         db.session.add(new_pet)
-    #         db.session.commit()
+            db.session.add(new_organization)
+            db.session.commit()
 
-    #         response = make_response(
-    #             new_pet.to_dict(),
-    #             201
-    #         )
-    #     except ValueError as e:
-    #         response = make_response(
-    #             { "errors": [str(e)] }, 
-    #             400
-    #         )
-    #     except: ## improvement (low-priority): make non-Value error messages more informative 
-    #                 # How to catch IntegrityError for NULL constraint violation?
-    #         response = make_response(
-    #             { "errors": ['Please try again.'] }, 
-    #             400
-    #         )
+            response = make_response(
+                new_organization.to_dict(),
+                201
+            )
+        except ValueError as e:
+            response = make_response(
+                { "errors": [str(e)] }, 
+                400
+            )
+        except: ## improvement (low-priority): make non-Value error messages more informative 
+                    # How to catch IntegrityError for NULL constraint violation?
+            response = make_response(
+                { "errors": ['Please try again.'] }, 
+                400
+            )
     return response
 
 if __name__ == '__main__':

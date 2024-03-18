@@ -21,6 +21,8 @@ class Pet(db.Model, SerializerMixin):
 
     ## validations
 
+    # improvement (low priority): combine checker for required fields
+
     @validates('name')
     def validate_name(self, key, value):
         if not value:
