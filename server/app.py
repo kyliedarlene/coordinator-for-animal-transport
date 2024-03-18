@@ -32,16 +32,26 @@ def pets():
         try: 
             form_data = request.get_json()
 
-            new_pet = Pet(
-                name = form_data['name'],
-                type = form_data['type'],
-                size = form_data['size'],
-                breed = form_data['breed'],
-                color = form_data['color'],
-                sex = form_data['sex'],
-                flight_risk = form_data['flight_risk'],
-                notes = form_data['notes']
-            )
+            new_pet = Pet()
+
+            print(new_pet)
+
+            for attr in dir(Pet):
+                if attr in form_data:
+                    setattr(new_pet, attr, form_data[attr])
+
+            print(new_pet)
+
+            # new_pet = Pet(
+            #     name = form_data['name'],
+            #     type = form_data['type'],
+            #     size = form_data['size'],
+            #     breed = form_data['breed'],
+            #     color = form_data['color'],
+            #     sex = form_data['sex'],
+            #     flight_risk = form_data['flight_risk'],
+            #     notes = form_data['notes']
+            # )
 
             db.session.add(new_pet)
             db.session.commit()
