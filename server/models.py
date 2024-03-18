@@ -21,7 +21,7 @@ class Pet(db.Model, SerializerMixin):
 
     ## relationships
 
-    # validations
+    ## validations
     @validates('name')
     def validate_name(self, key, value):
         if not value:
@@ -38,15 +38,15 @@ class Pet(db.Model, SerializerMixin):
     
     @validates('sex')
     def validate_sex(self, key, value):
-        if value not in {'M', 'F', 'unspecified'}:  ## improvement (low-priority): make 'm' and 'f' case-insensitive
+        if value not in {'M', 'F', 'unspecified'}:  # improvement (low-priority): make 'm' and 'f' case-insensitive
             raise ValueError("Sex must be one of the following: 'M', 'F', 'unspecified'")
         return value
     
-    # @validates('flight_risk')
-    # def validate_flight_risk(self, key, value):
-    #     if value.lower() not in {'low', 'medium', 'high', 'unknown'}:
-    #         raise ValueError("Flight risk must be one of the following: 'low', 'medium', 'high', 'unknown")
-    #     return value
+    @validates('flight_risk')
+    def validate_flight_risk(self, key, value):
+        if value.lower() not in {'low', 'medium', 'high', 'unknown'}:
+            raise ValueError("Flight risk must be one of the following: 'low', 'medium', 'high', 'unknown', 'unspecified'")
+        return value
     
     ## __repr__
     
