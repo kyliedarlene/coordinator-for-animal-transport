@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+import 'semantic-ui-css/semantic.min.css'
 import { createRoot } from "react-dom/client";
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
