@@ -3,7 +3,7 @@ import ManageAccount from "../components/ManageAccount";
 import PetsSaved from "../components/PetsSaved";
 
 function DashContent( {content} ) {    
-    const displayContent = {
+    const display = {
         "TransportList": <TransportList />,
         "ManageAccount": <ManageAccount />,
         "PetsSaved": <PetsSaved />
@@ -12,7 +12,7 @@ function DashContent( {content} ) {
     return (
         <>
         <h2>DashContent</h2>
-        {displayContent[content]}
+        {display[content]}
         </>
     )
 }
