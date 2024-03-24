@@ -15,6 +15,7 @@ function SideMenu() {
                 name='My Account'
                 active={activeItem === 'My Account'}
                 onClick={() => setActiveItem('My Account')}
+                to={'/dashboard/account'}
             //   onClick={this.handleItemClick}
             />
             <MenuItem

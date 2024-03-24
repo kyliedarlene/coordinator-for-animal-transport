@@ -4,9 +4,9 @@ import PetsSaved from "../components/PetsSaved";
 
 function DashContent( {content} ) {    
     const display = {
-        "TransportList": <TransportList />,
-        "ManageAccount": <ManageAccount />,
-        "PetsSaved": <PetsSaved />
+        'My Account': <ManageAccount />,
+        'Transports': <TransportList />,
+        'Pets Saved': <PetsSaved />
     }
     
     return (

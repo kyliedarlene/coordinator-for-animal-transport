@@ -15,15 +15,15 @@ const routes = [
     },
     {
         path: '/dashboard/transports',
-        element: <Dashboard content={"TransportList"} />,
+        element: <Dashboard content={'Transports'} />,
     },
     {
         path: '/dashboard/account',
-        element: <Dashboard content={"ManageAccount"} />,
+        element: <Dashboard content={'My Account'} />,
     },
     {
         path: '/dashboard/pets-saved',
-        element: <Dashboard content={"PetsSaved"} />,
+        element: <Dashboard content={'Pets Saved'} />,
     }
 ];
 
