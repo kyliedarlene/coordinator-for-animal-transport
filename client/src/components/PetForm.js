@@ -142,7 +142,7 @@ function PetForm({
                 fluid
                 label='Flight Risk'
                 options={flightRiskOptions}
-                placeholder={pet.flight_risk === 'unspecified' ? 'unknown' : pet.flight_risk}
+                placeholder={flightRisk === 'unspecified' ? 'unknown' : flightRisk}
             />
         <FormTextArea id='notes' label='Notes' placeholder={pet.notes} />
         <FormButton>Submit</FormButton>

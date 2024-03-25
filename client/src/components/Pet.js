@@ -38,7 +38,7 @@ function Pet({ id }) {
           })
   }
     
-    const assigmentOptions = [
+    const assignmentOptions = [
         {
             key: 'unassigned',
             text: 'unassigned',
@@ -70,8 +70,8 @@ function Pet({ id }) {
                 Receiving organization: {' '}
                 <Dropdown
                 inline
-                options={assigmentOptions}
-                defaultValue={assigmentOptions[0].value}
+                options={assignmentOptions}
+                defaultValue={assignmentOptions[0].value}
                 />
             </span>
         </AccordionContent>
