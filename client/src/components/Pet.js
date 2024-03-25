@@ -8,9 +8,11 @@ import {
     Dropdown
   } from 'semantic-ui-react'
 import PetInfo from "./PetInfo";
+import PetForm from "./PetForm";
 
 function Pet({ pet }) {
     const [isActive, setIsActive] = useState(false);
+    const [editMode, setEditMode] = useState(false)
 
     const assigmentOptions = [
         {
@@ -36,7 +38,9 @@ function Pet({ pet }) {
           {/* improvement (stretch): add symbols for flight risk, assignment status, sex */}
         </AccordionTitle>
         <AccordionContent active={isActive} >
-            <PetInfo pet={pet} /> 
+            {/* <PetInfo pet={pet} />  */}
+            {/* <PetForm pet={pet} /> */}
+            {editMode ? <PetForm pet={pet}/> : <PetInfo pet={pet}/> }
             <span>
                 Receiving organization: {' '}
                 <Dropdown
