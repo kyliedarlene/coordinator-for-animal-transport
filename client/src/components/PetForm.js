@@ -18,27 +18,27 @@ function PetForm({ pet }) {
     const [color, setColor] = useState('')
     const [sex, setSex] = useState('')
     const [flightRisk, setFlightRisk] = useState('')
-
-    // function handleUpdatePet(id){
-    //     fetch(`pets/${id}`, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //             color: color,
-    //         })
-    //     })
-    //         .then(r => r.json())
-    //         .then((updatedPet) => console.log(updatedPet))
-    // }
     
-    // function handleSubmit(e){
-    //     e.preventDefault();
-    //     console.log(color);
-    //     handleUpdatePet(pet.id)
-    //     setColor('')
-    // }
+    function handleUpdatePet(id) {
+        fetch(`/pets/${id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                color: color
+            })
+        })
+            .then(r => r.json())
+            .then((updatedPet) => console.log(updatedPet))
+    }
+    
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log(color);
+        handleUpdatePet(pet.id)
+        setColor('')
+    }
     
     const speciesOptions = [
         { text: 'dog', value: 'dog' },
@@ -58,7 +58,7 @@ function PetForm({ pet }) {
       ]
 
     return (
-        <Form >
+        <Form onSubmit={handleSubmit} >
             <FormField id='name' required >
                 <label>Name</label>
                 <input placeholder={pet.name} />
