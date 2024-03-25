@@ -1,10 +1,12 @@
-import Dog from "./Dog";
+import Pet from "./Pet";
 
-function TransportPets() {
+function TransportPets({ pets }) {
+    console.log(pets)
+    
     return (
         <>
         <h3>Dogs</h3>
-        <Dog />
+        <Pet />
         </>
     )
 }
