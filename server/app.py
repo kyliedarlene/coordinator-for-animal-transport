@@ -80,7 +80,7 @@ def pet_by_id(id):
 
                 db.session.commit()
                 response = make_response(
-                    pet.to_dict(), 
+                    pet.to_dict(rules=('-transport_pets',)), 
                     202
                 )
             except ValueError:
