@@ -6,17 +6,23 @@ import TransportHeader from "./TransportHeader";
 
 function Transport({ id }) {
     const [transport, setTransport] = useState({})
+    const [organizations, setOrganizations] = useState([])
 
     useEffect(() => {
         fetch(`/transports/${id}`)
             .then(r => r.json())
-            .then(transport => console.log(transport))
+            .then(transport => setTransport(transport))
+    }, []);
+
+    useEffect(() => {
+        fetch(`/transports/${id}/organizations`)
+            .then(r => r.json())
+            .then(orgs => setOrganizations(orgs))
     }, []);
     
     return (
         <>
-        <h2>Transport</h2>
-        <TransportHeader />
+        <TransportHeader transport={transport} sendingOrgs={organizations} />
         <TransportDogs />
         <TransportOrganizations />
         </>
