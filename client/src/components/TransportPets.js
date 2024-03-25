@@ -1,3 +1,5 @@
+import { Accordion } from 'semantic-ui-react'
+
 import Pet from "./Pet";
 
 function TransportPets({ pets }) {
@@ -6,9 +8,11 @@ function TransportPets({ pets }) {
     return (
         <>
         <h3>Dogs</h3>
-        {pets.map((pet) => (
-            <Pet key={pet.id} pet={pet} />
-        ))}
+        <Accordion styled >
+            {pets.map((pet) => (
+                <Pet key={pet.id} pet={pet} />
+            ))}
+        </Accordion>
         </>
     )
 }
