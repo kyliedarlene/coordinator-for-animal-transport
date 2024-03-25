@@ -10,8 +10,6 @@ function TransportList() {
             .then(transports => setTransports(transports))
     }, []);
 
-    console.log(transports)
-
     return (
         <>
         <h3>Transports</h3>
