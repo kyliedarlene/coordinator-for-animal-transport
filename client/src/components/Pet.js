@@ -1,7 +1,8 @@
-function Pet() {
+function Pet({ pet }) {
+    console.log(pet)
     return (
         <>
-        <h4>Pet</h4>
+        <h4>{pet.name}</h4>
         </>
     )
 }

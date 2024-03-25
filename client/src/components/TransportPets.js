@@ -6,7 +6,9 @@ function TransportPets({ pets }) {
     return (
         <>
         <h3>Dogs</h3>
-        <Pet />
+        {pets.map((pet) => (
+            <Pet key={pet.id} pet={pet} />
+        ))}
         </>
     )
 }
