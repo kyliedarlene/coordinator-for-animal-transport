@@ -7,6 +7,7 @@ import {
     Segment,
     Dropdown
   } from 'semantic-ui-react'
+import PetInfo from "./PetInfo";
 
 function Pet({ pet }) {
     const [isActive, setIsActive] = useState(false);
@@ -35,16 +36,7 @@ function Pet({ pet }) {
           {/* improvement (stretch): add symbols for flight risk, assignment status, sex */}
         </AccordionTitle>
         <AccordionContent active={isActive} >
-            <Segment>
-                <h5>Pet Info</h5>
-                <p>species: {pet.species}</p>
-                <p>size: {pet.size}</p>
-                <p>sex: {pet.sex}</p>
-                <p>breed: {pet.breed}</p>
-                <p>color: {pet.color}</p>
-                <p>flight risk: {pet.flight_risk}</p>
-                <p>notes: {pet.notes}</p>
-            </Segment>
+            <PetInfo pet={pet} /> 
             <span>
                 Receiving organization: {' '}
                 <Dropdown
