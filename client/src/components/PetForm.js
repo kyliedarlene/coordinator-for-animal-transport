@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
     FormTextArea,
     FormSelect,
@@ -10,6 +11,14 @@ import {
   } from 'semantic-ui-react'
 
 function PetForm({ pet }) {
+    const [name, setName] = useState('')
+    const [species, setSpecies] = useState('')
+    const [size, setSize] = useState('')
+    const [breed, setBreed] = useState('')
+    const [color, setColor] = useState('')
+    const [sex, setSex] = useState('')
+    const [flightRisk, setFlightRisk] = useState('')
+    
     const speciesOptions = [
         { text: 'dog', value: 'dog' },
         { text: 'cat', value: 'cat' },
@@ -20,19 +29,26 @@ function PetForm({ pet }) {
         { text: 'other', value: 'other' },
       ]
 
+      const flightRiskOptions = [
+        { text: 'unknown', value: 'unspecified' },
+        { text: 'high', value: 'high' },
+        { text: 'medium', value: 'medium' },
+        { text: 'low', value: 'low' },
+      ]
+
     return (
         <Form>
             <FormField id='name' required >
                 <label>Name</label>
                 <input placeholder={pet.name} />
             </FormField>
-            <FormSelect required
+            <FormSelect id='species' required
                 fluid
                 label='Species'
                 options={speciesOptions}
                 placeholder={pet.species}
             />
-            <FormGroup inline placeholder={pet.size} >
+            <FormGroup id='size' inline placeholder={pet.size} >
                 <label>Size</label>
                 <FormRadio
                     label='tiny'
@@ -65,7 +81,7 @@ function PetForm({ pet }) {
                     // onChange={this.handleChange}
                 />
             </FormGroup>
-            <FormGroup inline placeholder={pet.sex} >
+            <FormGroup id='sex' inline placeholder={pet.sex} >
             <label>Sex</label>
             <FormRadio
                 label='male'
@@ -87,10 +103,16 @@ function PetForm({ pet }) {
             />
             </FormGroup>
         <FormGroup widths='equal'>
-          <FormInput fluid label='Breed' placeholder={pet.breed} />
-          <FormInput fluid label='Color' placeholder={pet.color} />
+          <FormInput id='breed' fluid label='Breed' placeholder={pet.breed} />
+          <FormInput id='color' fluid label='Color' placeholder={pet.color} />
         </FormGroup>
-        <FormTextArea label='Notes' placeholder={pet.notes} />
+        <FormSelect id='flight-risk'
+                fluid
+                label='Flight Risk'
+                options={flightRiskOptions}
+                placeholder={pet.flight_risk === 'unspecified' ? 'unknown' : pet.flight_risk}
+            />
+        <FormTextArea id='notes' label='Notes' placeholder={pet.notes} />
         <FormButton>Submit</FormButton>
       </Form>
     )
