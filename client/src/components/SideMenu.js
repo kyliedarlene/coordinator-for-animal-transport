@@ -4,7 +4,7 @@ import { MenuItem, Menu } from 'semantic-ui-react'
 function SideMenu({ activeItem }) {
 
     return (
-        <Menu pointing secondary vertical>
+        <Menu pointing vertical>
             <MenuItem 
                 as={Link} 
                 to='/dashboard/account'

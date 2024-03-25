@@ -1,3 +1,5 @@
+import { Segment } from 'semantic-ui-react'
+
 import TransportList from "../components/TransportList";
 import ManageAccount from "../components/ManageAccount";
 import PetsSaved from "../components/PetsSaved";
@@ -10,10 +12,9 @@ function DashContent( {content} ) {
     }
     
     return (
-        <>
-        <h2>DashContent</h2>
+        <Segment>
         {display[content]}
-        </>
+        </Segment>
     )
 }
 

@@ -1,7 +1,10 @@
 function PetsSaved() {
+    // will add fetch later
+    const num = 100;
+
     return (
         <>
-        <h3>PetsSaved</h3>
+        <h3>You've helped save {num} pets through your transports!</h3>
         </>
     )
 }
