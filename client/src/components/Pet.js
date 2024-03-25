@@ -10,9 +10,11 @@ import PetInfo from "./PetInfo";
 import PetForm from "./PetForm";
 
 function Pet({ id }) {
+    const [pet, setPet] = useState({});
+
+  
     const [isActive, setIsActive] = useState(false);
     const [editMode, setEditMode] = useState(false);
-    const [pet, setPet] = useState({});
 
     useEffect(() => {
       fetch(`/pets/${id}`)
@@ -20,15 +22,13 @@ function Pet({ id }) {
         .then(pet => setPet(pet))
     }, []);
     
-    function handleUpdatePet(id) {
+    function handleUpdatePet(id, formData) {
       fetch(`/pets/${id}`, {
           method: 'PATCH',
           headers: {
               "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-              color: "tessst"
-          })
+          body: JSON.stringify(formData)
       })
           .then(r => r.json())
           .then((updatedPet) => {

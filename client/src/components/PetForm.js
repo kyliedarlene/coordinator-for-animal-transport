@@ -10,20 +10,38 @@ import {
     FormField
   } from 'semantic-ui-react'
 
-function PetForm({ pet, handleUpdatePet }) {
-    const [name, setName] = useState('')
-    const [species, setSpecies] = useState('')
-    const [size, setSize] = useState('')
-    const [breed, setBreed] = useState('')
-    const [color, setColor] = useState('')
-    const [sex, setSex] = useState('')
-    const [flightRisk, setFlightRisk] = useState('')
+function PetForm({ 
+    pet = {
+        name: '',
+        species: '',
+        size: '',
+        breed: 'unspecified',
+        color: 'unspecified',
+        sex: 'unspecified',
+        flight_risk: 'unspecified'
+    }, 
+    handleUpdatePet 
+}) {
+    const [name, setName] = useState(pet.name)
+    const [species, setSpecies] = useState(pet.species)
+    const [size, setSize] = useState(pet.size)
+    const [breed, setBreed] = useState(pet.breed)
+    const [color, setColor] = useState(pet.color)
+    const [sex, setSex] = useState(pet.sex)
+    const [flightRisk, setFlightRisk] = useState(pet.flight_risk)
     
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(color);
-        handleUpdatePet(pet.id)
-        setColor('')
+        const formData = {
+            name: name,
+            species: species,
+            size: size,
+            breed: breed,
+            color: color,
+            sex: sex,
+            // flight_risk: flightRisk,
+        }
+        handleUpdatePet(pet.id, formData)
     }
     
     const speciesOptions = [
@@ -45,9 +63,9 @@ function PetForm({ pet, handleUpdatePet }) {
 
     return (
         <Form onSubmit={handleSubmit} >
-            <FormField id='name' required >
+            <FormField id='name' required>
                 <label>Name</label>
-                <input placeholder={pet.name} />
+                <input placeholder={'Name'} value={name} onChange={(e) => {setName(e.target.value)}} />
             </FormField>
             <FormSelect id='species' required
                 fluid
