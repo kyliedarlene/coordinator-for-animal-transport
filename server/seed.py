@@ -199,7 +199,7 @@ if __name__ == '__main__':
             Pet(
                 name = "Owlbear Cub",
                 species = "dog",
-                size = "XL",
+                size = "huge",
                 breed = "Saint Bernard",
                 sex = "F",
                 flight_risk = "low"
@@ -242,6 +242,10 @@ if __name__ == '__main__':
             Organization(
                 name = "C.A.R.E.",
                 city = "Provo"
+            ),
+            Organization(
+                name = "Saving Pets",
+                city = "Mexico City"
             )
         ]
 
@@ -307,12 +311,22 @@ if __name__ == '__main__':
                 organization_id = 2,
             ),
             TransportOrganization(
+                transport_id = 1,
+                organization_id = 4,
+                is_receiving = False
+            ),
+            TransportOrganization(
                 transport_id = 2,
                 organization_id = 2,
             ),
             TransportOrganization(
                 transport_id = 2,
                 organization_id = 3,
+            ),
+            TransportOrganization(
+                transport_id = 2,
+                organization_id = 4,
+                is_receiving = False
             )
         ]
 
