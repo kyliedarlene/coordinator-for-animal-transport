@@ -1,34 +1,27 @@
-import { useState } from "react";
+import { Link } from 'react-router-dom'
 import { MenuItem, Menu } from 'semantic-ui-react'
 
-function SideMenu() {
-    const [activeItem, setActiveItem] = useState('Transports');
-    console.log(activeItem)
-
-    function handleItemClick(e) {
-        
-    }
+function SideMenu({ activeItem }) {
 
     return (
         <Menu pointing secondary vertical>
-            <MenuItem
+            <MenuItem 
+                as={Link} 
+                to='/dashboard/account'
                 name='My Account'
                 active={activeItem === 'My Account'}
-                onClick={() => setActiveItem('My Account')}
-                to={'/dashboard/account'}
-            //   onClick={this.handleItemClick}
             />
             <MenuItem
+                as={Link} 
+                to='/dashboard/transports'
                 name='Transports'
                 active={activeItem === 'Transports'}
-                onClick={() => setActiveItem('Transports')}
-                //   onClick={this.handleItemClick}
             />
             <MenuItem
+                as={Link} 
+                to='/dashboard/pets-saved'
                 name='Pets Saved'
                 active={activeItem === 'Pets Saved'}
-                onClick={() => setActiveItem('Pets Saved')}
-            //   onClick={this.handleItemClick}
             />
         </Menu>
     )
