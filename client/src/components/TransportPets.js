@@ -10,7 +10,7 @@ function TransportPets({ pets }) {
         <h3>Dogs</h3>
         <Accordion styled >
             {pets.map((pet) => (
-                <Pet key={pet.id} pet={pet} />
+                <Pet key={pet.id} id={pet.id} />
             ))}
             <AccordionTitle
             //   onClick={() => setIsActive(!isActive)}

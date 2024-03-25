@@ -10,7 +10,7 @@ import {
     FormField
   } from 'semantic-ui-react'
 
-function PetForm({ pet }) {
+function PetForm({ pet, handleUpdatePet }) {
     const [name, setName] = useState('')
     const [species, setSpecies] = useState('')
     const [size, setSize] = useState('')
@@ -18,20 +18,6 @@ function PetForm({ pet }) {
     const [color, setColor] = useState('')
     const [sex, setSex] = useState('')
     const [flightRisk, setFlightRisk] = useState('')
-    
-    function handleUpdatePet(id) {
-        fetch(`/pets/${id}`, {
-            method: 'PATCH',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                color: color
-            })
-        })
-            .then(r => r.json())
-            .then((updatedPet) => console.log(updatedPet))
-    }
     
     function handleSubmit(e) {
         e.preventDefault();

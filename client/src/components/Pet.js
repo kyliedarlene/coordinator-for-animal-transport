@@ -9,11 +9,34 @@ import {
 import PetInfo from "./PetInfo";
 import PetForm from "./PetForm";
 
-function Pet({ pet }) {
+function Pet({ id }) {
     const [isActive, setIsActive] = useState(false);
     const [editMode, setEditMode] = useState(false);
+    const [pet, setPet] = useState({});
 
+    useEffect(() => {
+      fetch(`/pets/${id}`)
+        .then(r => r.json())
+        .then(pet => setPet(pet))
+    }, []);
     
+    function handleUpdatePet(id) {
+      fetch(`/pets/${id}`, {
+          method: 'PATCH',
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+              color: "tessst"
+          })
+      })
+          .then(r => r.json())
+          .then((updatedPet) => {
+            console.log(updatedPet)
+            setEditMode(!editMode)
+            setPet(updatedPet)
+          })
+  }
     
     const assigmentOptions = [
         {
@@ -40,7 +63,7 @@ function Pet({ pet }) {
         </AccordionTitle>
         <AccordionContent active={isActive} >
             {editMode ? 
-                <PetForm pet={pet}/> : 
+                <PetForm pet={pet} handleUpdatePet={handleUpdatePet}/> : 
                 <PetInfo pet={pet} handleEditClick={()=> setEditMode(!editMode)} /> 
             }
             <span>
