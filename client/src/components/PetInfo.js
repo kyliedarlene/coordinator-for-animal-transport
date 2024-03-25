@@ -6,10 +6,11 @@ import {
     Dropdown
   } from 'semantic-ui-react'
 
-function PetInfo({ pet }) {
+function PetInfo({ pet, handleEditClick }) {
     return (
         <Segment>
             <h5>Pet Info</h5>
+            <Icon name='edit' onClick={handleEditClick} />
             <p>species: {pet.species}</p>
             <p>size: {pet.size}</p>
             <p>sex: {pet.sex}</p>

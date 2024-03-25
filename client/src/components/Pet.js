@@ -4,7 +4,6 @@ import {
     AccordionTitle,
     AccordionContent,
     Icon,
-    Segment,
     Dropdown
   } from 'semantic-ui-react'
 import PetInfo from "./PetInfo";
@@ -12,7 +11,7 @@ import PetForm from "./PetForm";
 
 function Pet({ pet }) {
     const [isActive, setIsActive] = useState(false);
-    const [editMode, setEditMode] = useState(false)
+    const [editMode, setEditMode] = useState(false);
 
     const assigmentOptions = [
         {
@@ -35,12 +34,13 @@ function Pet({ pet }) {
         >
           <Icon name='dropdown' />
           {pet.name}
-          {/* improvement (stretch): add symbols for flight risk, assignment status, sex */}
+          {/* improvement (stretch): add symbols for flight risk, assignment status, sex, etc. */}
         </AccordionTitle>
         <AccordionContent active={isActive} >
-            {/* <PetInfo pet={pet} />  */}
-            {/* <PetForm pet={pet} /> */}
-            {editMode ? <PetForm pet={pet}/> : <PetInfo pet={pet}/> }
+            {editMode ? 
+                <PetForm pet={pet}/> : 
+                <PetInfo pet={pet} handleEditClick={()=> setEditMode(!editMode)} /> 
+            }
             <span>
                 Receiving organization: {' '}
                 <Dropdown
