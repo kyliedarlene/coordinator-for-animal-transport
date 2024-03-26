@@ -16,10 +16,10 @@ function PetForm({
         name: '',
         species: '',
         size: '',
-        breed: 'unspecified',
-        color: 'unspecified',
-        sex: 'unspecified',
-        flight_risk: 'unknown',
+        breed: '',
+        color: '',
+        sex: '',
+        // flight_risk: 'unknown',
         notes: ''
     }, 
     handleUpdatePet 

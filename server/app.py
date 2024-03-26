@@ -40,7 +40,7 @@ def pets():
             db.session.commit()
 
             response = make_response(
-                new_pet.to_dict(),
+                new_pet.to_dict(rules=('-transport_pets',)),
                 201
             )
         except ValueError as e:
