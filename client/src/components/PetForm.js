@@ -13,6 +13,7 @@ import {
 
 function PetForm({ 
     pet = {
+        id: null,
         name: '',
         species: '',
         size: '',
@@ -150,7 +151,7 @@ function PetForm({
             <FormRadio
                 label='unknown'
                 value='unspecified'
-                checked={sex === 'unspecified'}
+                checked={(sex != 'M') && (sex != 'F')}
                 onChange={(e, {value}) => setSex(value)}
             />
             </FormGroup>

@@ -4,8 +4,16 @@ import Pet from "./Pet";
 import PetForm from './PetForm';
 
 function TransportPets({ pets }) {
-    function handleAddPet() {
-        
+    function handleAddPet(id, formData) {
+        fetch('/pets', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(r => r.json())
+            .then((newPet) => console.log(newPet))
     }
     
     return (
@@ -25,7 +33,7 @@ function TransportPets({ pets }) {
             {"Add Pet"}
             </AccordionTitle>
             <AccordionContent active >
-                <PetForm />
+                <PetForm handleUpdatePet={handleAddPet} />
             </AccordionContent>
 
         </Accordion>
