@@ -30,7 +30,7 @@ function Transport({ id }) {
     return (
         <>
         <TransportHeader transport={transport} sendingOrgs={organizations} />
-        <TransportPets pets={pets} />
+        <TransportPets pets={pets} handleAddPet handleUpdatePet />
         <TransportOrganizations />
         </>
     )
