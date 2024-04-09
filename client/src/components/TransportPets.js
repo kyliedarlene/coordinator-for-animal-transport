@@ -5,20 +5,8 @@ import { Accordion, AccordionTitle, AccordionContent, Icon } from 'semantic-ui-r
 import Pet from "./Pet";
 import PetForm from './PetForm';
 
-function TransportPets({ pets }) {
+function TransportPets({ pets, handleAddPet }) {
     const [isActive, setIsActive] = useState(false);
-    
-    function handleAddPet(id, formData) {
-        fetch('/pets', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData)
-        })
-            .then(r => r.json())
-            .then((newPet) => console.log(newPet))
-    }
     
     return (
         <>

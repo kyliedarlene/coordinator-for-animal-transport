@@ -26,11 +26,23 @@ function Transport({ id }) {
             .then(r => r.json())
             .then(pets => setPets(pets))
     }, []);
+
+    function handleAddPet(id, formData) {
+        fetch('/pets', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(r => r.json())
+            .then((newPet) => console.log(newPet))
+    }
     
     return (
         <>
         <TransportHeader transport={transport} sendingOrgs={organizations} />
-        <TransportPets pets={pets} handleAddPet handleUpdatePet />
+        <TransportPets pets={pets} handleAddPet={handleAddPet} handleUpdatePet />
         <TransportOrganizations />
         </>
     )
