@@ -7,6 +7,11 @@ import PetForm from "./PetForm";
 function NewPet({ handleAddPet }) {
     const [isActive, setIsActive] = useState(false);
 
+    function handleUpdatePet(id, formData) {
+        handleAddPet(id, formData)
+        setIsActive(!isActive)
+    }
+
     return (
         <>
             <AccordionTitle
@@ -16,7 +21,7 @@ function NewPet({ handleAddPet }) {
                 {"Add Pet"}
             </AccordionTitle>
             <AccordionContent active={isActive} >
-                <PetForm handleUpdatePet={handleAddPet} />
+                <PetForm handleUpdatePet={handleUpdatePet} />
             </AccordionContent>
         </>
     )

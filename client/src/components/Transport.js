@@ -8,6 +8,7 @@ function Transport({ id }) {
     const [transport, setTransport] = useState({})
     const [organizations, setOrganizations] = useState([])
     const [pets, setPets] = useState([])
+    const [addPetMode, setAddPetMode] = useState(false)
 
     useEffect(() => {
         fetch(`/transports/${id}`)
