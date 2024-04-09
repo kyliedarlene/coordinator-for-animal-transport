@@ -12,7 +12,6 @@ import PetForm from "./PetForm";
 function Pet({ id }) {
     const [pet, setPet] = useState({});
 
-  
     const [isActive, setIsActive] = useState(false);
     const [editMode, setEditMode] = useState(false);
 
@@ -55,7 +54,10 @@ function Pet({ id }) {
         <>
         <AccordionTitle
           active={isActive}
-          onClick={() => setIsActive(!isActive)}
+          onClick={() => {
+            setIsActive(!isActive)
+            setEditMode(false)
+          }}
         >
           <Icon name='dropdown' />
           {pet.name}
