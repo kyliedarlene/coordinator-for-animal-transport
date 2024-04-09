@@ -1,13 +1,10 @@
-import { useState } from "react";
-
 import { Accordion, AccordionTitle, AccordionContent, Icon } from 'semantic-ui-react'
 
 import Pet from "./Pet";
 import PetForm from './PetForm';
+import NewPet from './NewPet';
 
 function TransportPets({ pets, handleAddPet }) {
-    const [isActive, setIsActive] = useState(false);
-    
     return (
         <>
         <h3>Pets</h3>
@@ -17,16 +14,8 @@ function TransportPets({ pets, handleAddPet }) {
                 <Pet key={pet.id} id={pet.id} />
             ))}
 
-            {/* Add Pet */}
-            <AccordionTitle
-               onClick={() => setIsActive(!isActive)}
-            >
-            <Icon name='add' />
-            {"Add Pet"}
-            </AccordionTitle>
-            <AccordionContent active={isActive} >
-                <PetForm handleUpdatePet={handleAddPet} />
-            </AccordionContent>
+            {/* New Pet */}
+            <NewPet handleAddPet={handleAddPet} />
 
         </Accordion>
         </>

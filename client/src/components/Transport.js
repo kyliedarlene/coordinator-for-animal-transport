@@ -36,7 +36,11 @@ function Transport({ id }) {
             body: JSON.stringify(formData)
         })
             .then(r => r.json())
-            .then((newPet) => console.log(newPet))
+            .then((newPet) => {
+                console.log(newPet)
+                const newPets = [...pets, newPet]
+                setPets(newPets)
+            })
     }
     
     return (
