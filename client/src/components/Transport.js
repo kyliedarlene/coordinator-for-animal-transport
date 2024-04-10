@@ -48,7 +48,12 @@ function Transport({ id }) {
             method: 'DELETE',
         })
             .then((r) => r.json())
-            .then((d) => console.log("dleete"))
+            .then((r) => {
+                const deletedPet = pets.find((pet) => pet.id === id)
+                const index = pets.indexOf(deletedPet)
+                const newPets = pets.toSpliced(index, 1)
+                setPets(newPets)
+            })
     }
     
     return (

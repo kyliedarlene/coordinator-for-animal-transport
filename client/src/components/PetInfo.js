@@ -9,8 +9,10 @@ import {
 function PetInfo({ pet, handleEditClick }) {
     return (
         <Segment>
-            <h5>Pet Info</h5>
-            <Icon name='edit' onClick={handleEditClick} />
+            <h5>
+                <Icon name='edit' onClick={handleEditClick} />
+                Pet Info
+            </h5>
             <p>species: {pet.species}</p>
             <p>size: {pet.size}</p>
             <p>sex: {pet.sex}</p>
