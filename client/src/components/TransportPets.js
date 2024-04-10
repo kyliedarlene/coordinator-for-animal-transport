@@ -1,7 +1,6 @@
-import { Accordion, AccordionTitle, AccordionContent, Icon } from 'semantic-ui-react'
+import { Accordion } from 'semantic-ui-react'
 
 import Pet from "./Pet";
-import PetForm from './PetForm';
 import NewPet from './NewPet';
 
 function TransportPets({ pets, handleAddPet, handleDeletePet }) {

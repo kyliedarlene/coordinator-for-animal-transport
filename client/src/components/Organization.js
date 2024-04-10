@@ -1,7 +1,28 @@
-function Organization() {
+import { useState, useEffect } from "react";
+
+import {
+    AccordionTitle,
+    AccordionContent,
+    Icon,
+    Dropdown,
+    Button
+  } from 'semantic-ui-react'
+
+function Organization({ organization }) {
+    const [isActive, setIsActive] = useState(false);
+
     return (
         <>
-        <h4>Organization</h4>
+            <AccordionTitle 
+                active={isActive} 
+                onClick={() => setIsActive(!isActive)}
+            >
+                <Icon name='dropdown' />
+                {organization.name}
+            </AccordionTitle>  
+            <AccordionContent active={isActive}>
+                
+            </AccordionContent>
         </>
     )
 }

@@ -64,7 +64,7 @@ function Transport({ id }) {
             handleAddPet={handleAddPet} 
             handleDeletePet={handleDeletePet} 
         />
-        <TransportOrganizations />
+        <TransportOrganizations organizations={organizations} />
         </>
     )
 }

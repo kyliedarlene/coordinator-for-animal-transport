@@ -1,10 +1,22 @@
 import Organization from "./Organization";
 
-function TransportOrganizations() {
+import { Accordion } from 'semantic-ui-react'
+
+function TransportOrganizations({ organizations }) {
+    
+    console.log(organizations)
+    
     return (
         <>
-        <h3>Organizations Receiving Pets</h3>
-        <Organization />
+            <h3>Organizations Receiving Pets</h3>
+            <Accordion styled >
+                {organizations.map((organization) => (
+                    <Organization 
+                        key={organization.id} 
+                        organization={organization} 
+                    />
+                ))}
+            </Accordion>
         </>
     )
 }
