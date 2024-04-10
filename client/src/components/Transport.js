@@ -43,15 +43,22 @@ function Transport({ id }) {
             })
     }
 
-    // function handleDeletePet() {
-    //     fetch(`/pets/${id}`)
-    //         .then()
-    // }
+    function handleDeletePet(id) {
+        fetch(`/pets/${id}`, {
+            method: 'DELETE',
+        })
+            .then((r) => r.json())
+            .then((d) => console.log("dleete"))
+    }
     
     return (
         <>
         <TransportHeader transport={transport} sendingOrgs={organizations} />
-        <TransportPets pets={pets} handleAddPet={handleAddPet} />
+        <TransportPets 
+            pets={pets} 
+            handleAddPet={handleAddPet} 
+            handleDeletePet={handleDeletePet} 
+        />
         <TransportOrganizations />
         </>
     )

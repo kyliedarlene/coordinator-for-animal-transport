@@ -10,7 +10,7 @@ import {
 import PetInfo from "./PetInfo";
 import PetForm from "./PetForm";
 
-function Pet({ id }) {
+function Pet({ id, handleDeletePet }) {
     const [pet, setPet] = useState({});
 
     const [isActive, setIsActive] = useState(false);
@@ -85,10 +85,8 @@ function Pet({ id }) {
             <Button 
               floated='right' 
               size='small'
-              // icon
-              // labelPosition = 'right'
+              onClick={() => handleDeletePet(id)}
             >
-                {/* <Icon name='delete' /> */}
                 Remove {pet.name} from Transport
             </Button>
         </AccordionContent>
