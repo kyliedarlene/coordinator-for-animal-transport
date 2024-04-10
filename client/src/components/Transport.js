@@ -42,6 +42,11 @@ function Transport({ id }) {
                 setPets(newPets)
             })
     }
+
+    // function handleDeletePet() {
+    //     fetch(`/pets/${id}`)
+    //         .then()
+    // }
     
     return (
         <>

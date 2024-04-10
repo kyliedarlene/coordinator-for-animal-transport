@@ -4,7 +4,8 @@ import {
     AccordionTitle,
     AccordionContent,
     Icon,
-    Dropdown
+    Dropdown,
+    Button
   } from 'semantic-ui-react'
 import PetInfo from "./PetInfo";
 import PetForm from "./PetForm";
@@ -65,7 +66,11 @@ function Pet({ id }) {
         </AccordionTitle>
         <AccordionContent active={isActive} >
             {editMode ? 
-                <PetForm pet={pet} handleUpdatePet={handleUpdatePet}/> : 
+                <>
+                  {/* <Button negative>Delete Pet</Button> */}
+                  <PetForm pet={pet} handleUpdatePet={handleUpdatePet}/>
+                </>
+                : 
                 <PetInfo pet={pet} handleEditClick={()=> setEditMode(!editMode)} /> 
             }
             <span>
@@ -76,6 +81,16 @@ function Pet({ id }) {
                 defaultValue={assignmentOptions[0].value}
                 />
             </span>
+            {/* Delete Pet */}
+            <Button 
+              floated='right' 
+              size='small'
+              // icon
+              // labelPosition = 'right'
+            >
+                {/* <Icon name='delete' /> */}
+                Remove {pet.name} from Transport
+            </Button>
         </AccordionContent>
         </>
     )
