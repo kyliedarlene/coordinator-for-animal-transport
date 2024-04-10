@@ -8,7 +8,6 @@ function Transport({ id }) {
     const [transport, setTransport] = useState({})
     const [organizations, setOrganizations] = useState([])
     const [pets, setPets] = useState([])
-    const [addPetMode, setAddPetMode] = useState(false)
 
     useEffect(() => {
         fetch(`/transports/${id}`)
@@ -47,7 +46,7 @@ function Transport({ id }) {
     return (
         <>
         <TransportHeader transport={transport} sendingOrgs={organizations} />
-        <TransportPets pets={pets} handleAddPet={handleAddPet} handleUpdatePet />
+        <TransportPets pets={pets} handleAddPet={handleAddPet} />
         <TransportOrganizations />
         </>
     )

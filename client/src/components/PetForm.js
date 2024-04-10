@@ -50,6 +50,7 @@ function PetForm({
                 notes: notes
             }
             handleUpdatePet(pet.id, formData)
+            // reset state
         }
         else {
             console.log("error")

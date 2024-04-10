@@ -20,7 +20,7 @@ class Pet(db.Model, SerializerMixin):
     notes = db.Column(db.String, nullable=True)
 
     ## relationships
-    transport_pets = db.relationship('TransportPet', back_populates='pet')
+    transport_pets = db.relationship('TransportPet', back_populates='pet', cascade='all')
 
     ## serialization rules
     serialize_rules = ('-transport_pets.pet',)
