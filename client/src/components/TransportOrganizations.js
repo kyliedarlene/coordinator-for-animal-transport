@@ -3,7 +3,7 @@ import Organization from "./Organization";
 function TransportOrganizations() {
     return (
         <>
-        <h3>TransportOrganizations</h3>
+        <h3>Organizations Receiving Pets</h3>
         <Organization />
         </>
     )

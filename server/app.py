@@ -244,7 +244,7 @@ def organizations_in_transport(id):
         
         response = make_response (
             organizations,
-            200
+            200 
         )
         
     return response

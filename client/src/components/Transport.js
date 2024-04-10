@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import TransportOrganizations from "./TranportOrganizations";
+import TransportOrganizations from "./TransportOrganizations";
 import TransportPets from "./TransportPets";
 import TransportHeader from "./TransportHeader";
 
