@@ -14,10 +14,11 @@ function Transport({ id }) {
             .then(r => r.json())
             .then(transport => {
                 setTransport(transport)
+                setPets(transport.pets)
                 setOrganizations(transport.organizations)
                 console.log(transport)
             })
-    }, [id]);
+    }, []);
 
     // useEffect(() => {
     //     fetch(`/transports/${id}/organizations`)
@@ -25,11 +26,11 @@ function Transport({ id }) {
     //         .then(orgs => setOrganizations(orgs))
     // }, []);
 
-    useEffect(() => {
-        fetch(`/transports/${id}/pets`)
-            .then(r => r.json())
-            .then(pets => setPets(pets))
-    }, []);
+    // useEffect(() => {
+    //     fetch(`/transports/${id}/pets`)
+    //         .then(r => r.json())
+    //         .then(pets => setPets(pets))
+    // }, []);
 
     function handleAddPet(id, formData) {
         fetch('/pets', {
