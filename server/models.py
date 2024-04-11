@@ -19,6 +19,11 @@ class Pet(db.Model, SerializerMixin):
     flight_risk = db.Column(db.String, nullable=True, default="unspecified")
     notes = db.Column(db.String, nullable=True)
 
+    ## foreign key
+    receiving_org_id = db.Column(db.Integer, 
+                             db.ForeignKey('organizations.id'), 
+                             nullable=True)
+
     ## relationships
     transport_pets = db.relationship('TransportPet', back_populates='pet', cascade='all')
 
@@ -79,6 +84,7 @@ class Pet(db.Model, SerializerMixin):
             sex: {self.sex}
             flight risk: {self.flight_risk}
             notes: {self.notes}
+            receiving organization: {self.receiving_org}
         """
 
 ### Organization ###
@@ -174,9 +180,6 @@ class TransportPet(db.Model, SerializerMixin):
     pet_id = db.Column(db.Integer, 
                              db.ForeignKey('pets.id'), 
                              nullable=False)
-    # receiving_org_id = db.Column(db.Integer, 
-    #                          db.ForeignKey('organizations.id'), 
-    #                          nullable=True)
  
     ## relationships
     transport = db.relationship('Transport', back_populates='transport_pets')
