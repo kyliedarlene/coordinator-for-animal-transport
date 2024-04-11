@@ -215,7 +215,7 @@ def pets_in_transport(id):
         pets = []
         for transport_pet in transport.transport_pets:
             pet = transport_pet.pet
-            pet_dict = pet.to_dict(rules=('-transport_pets', '-transport_organizations',))
+            pet_dict = pet.to_dict(rules=('-transport_pets',))
             pets.append(pet_dict)
         
         response = make_response (
