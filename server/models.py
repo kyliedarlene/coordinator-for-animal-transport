@@ -25,10 +25,11 @@ class Pet(db.Model, SerializerMixin):
                              nullable=True)
 
     ## relationships
+    receiving_org = db.relationship('Organization', back_populates='pets')
     transport_pets = db.relationship('TransportPet', back_populates='pet', cascade='all')
 
     ## serialization rules
-    serialize_rules = ('-transport_pets.pet',)
+    serialize_rules = ('-transport_pets.pet', '-organization.pets')
 
     ## association proxy
     transports = association_proxy('transport_pets', 'transport',
@@ -100,13 +101,14 @@ class Organization(db.Model, SerializerMixin):
 
     ## relationships
     # transport_pets = db.relationship('TransportPet', back_populates='receiving_org')
+    pets = db.relationship('Pet', back_populates='receiving_org')
     transport_organizations = db.relationship('TransportOrganization', 
                                    back_populates='organization')
 
     ## serialization rules
     # serialize_rules = ('-transport_pets.receiving_org',
     #                    '-transport_organizations.organization',)
-    serialize_rules = ('-transport_organizations.organization',)
+    serialize_rules = ('-transport_organizations.organization', '-pets.receiving_org')
 
     ## association proxy
     transports = association_proxy('transport_organizations', 'transport',
