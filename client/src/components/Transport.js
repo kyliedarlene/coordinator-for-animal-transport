@@ -12,7 +12,11 @@ function Transport({ id }) {
     useEffect(() => {
         fetch(`/transports/${id}`)
             .then(r => r.json())
-            .then(transport => setTransport(transport))
+            .then(transport => {
+                setTransport(transport)
+                console.log(transport)
+                console.log(transport.organizations)
+            })
     }, []);
 
     useEffect(() => {

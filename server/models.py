@@ -96,7 +96,7 @@ class Organization(db.Model, SerializerMixin):
     ## serialization rules
     # serialize_rules = ('-transport_pets.receiving_org',
     #                    '-transport_organizations.organization',)
-    serialize_rules = ('--transport_organizations.organization',)
+    serialize_rules = ('-transport_organizations.organization',)
 
     ## association proxy
     transports = association_proxy('transport_organizations', 'transport',

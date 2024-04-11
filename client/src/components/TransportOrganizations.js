@@ -4,7 +4,7 @@ import { Accordion } from 'semantic-ui-react'
 
 function TransportOrganizations({ organizations }) {
     
-    console.log(organizations)
+    // console.log(organizations)
     
     return (
         <>
