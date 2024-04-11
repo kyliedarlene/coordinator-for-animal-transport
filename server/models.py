@@ -129,17 +129,19 @@ class Transport(db.Model, SerializerMixin):
     transport_organizations = db.relationship('TransportOrganization', 
                                               back_populates='transport')
 
-    ## serialization rules
-    serialize_rules = ('-transport_pets.transport', 
-                       '-transport_organizations.transport',)
-    # serialize_rules = ('-transport_pets.transport',)
-
     ## association proxies
     pets = association_proxy('transport_pets', 'pet',
                              creator=lambda pet_obj: TransportPet(pet=pet_obj))
     organizations = association_proxy('transport_organizations', 'organization',
                              creator=lambda org_obj: TransportPet(organization=org_obj))
 
+    ## serialization rules
+    serialize_rules = ('-transport_pets.transport', 
+                       '-transport_organizations.transport',
+                       'organizations',
+                       '-organizations.transport_organizations',)
+    # serialize_rules = ('-transport_pets.transport',)
+    
     ## validations
 
     ## __repr__

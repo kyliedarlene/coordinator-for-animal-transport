@@ -14,16 +14,15 @@ function Transport({ id }) {
             .then(r => r.json())
             .then(transport => {
                 setTransport(transport)
-                console.log(transport)
-                console.log(transport.organizations)
+                setOrganizations(transport.organizations)
             })
-    }, []);
+    }, [id]);
 
-    useEffect(() => {
-        fetch(`/transports/${id}/organizations`)
-            .then(r => r.json())
-            .then(orgs => setOrganizations(orgs))
-    }, []);
+    // useEffect(() => {
+    //     fetch(`/transports/${id}/organizations`)
+    //         .then(r => r.json())
+    //         .then(orgs => setOrganizations(orgs))
+    // }, []);
 
     useEffect(() => {
         fetch(`/transports/${id}/pets`)
