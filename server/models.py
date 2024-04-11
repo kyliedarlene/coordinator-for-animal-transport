@@ -89,14 +89,18 @@ class Organization(db.Model, SerializerMixin):
     # add later: additional address fields
 
     ## relationships
-    transport_pets = db.relationship('TransportPet', back_populates='receiving_org')
+    # transport_pets = db.relationship('TransportPet', back_populates='receiving_org')
     transport_organizations = db.relationship('TransportOrganization', 
                                    back_populates='organization')
 
     ## serialization rules
-    serialize_rules = ('-transport_pets.receiving_org',
-                       '-transport_organizations.organization',)
-    # serialize_rules = ('-transport_pets.receiving_org',)
+    # serialize_rules = ('-transport_pets.receiving_org',
+    #                    '-transport_organizations.organization',)
+    serialize_rules = ('--transport_organizations.organization',)
+
+    ## association proxy
+    transports = association_proxy('transport_organizations', 'transport',
+                                   creator=lambda transport_obj: TransportOrganization(transport=transport_obj))
 
     ## validations
 
@@ -161,19 +165,21 @@ class TransportPet(db.Model, SerializerMixin):
     pet_id = db.Column(db.Integer, 
                              db.ForeignKey('pets.id'), 
                              nullable=False)
-    receiving_org_id = db.Column(db.Integer, 
-                             db.ForeignKey('organizations.id'), 
-                             nullable=True)
+    # receiving_org_id = db.Column(db.Integer, 
+    #                          db.ForeignKey('organizations.id'), 
+    #                          nullable=True)
  
     ## relationships
     transport = db.relationship('Transport', back_populates='transport_pets')
     pet = db.relationship('Pet', back_populates='transport_pets')
-    receiving_org = db.relationship('Organization', back_populates='transport_pets')
+    # receiving_org = db.relationship('Organization', back_populates='transport_pets')
 
     ## serialization rules
+    # serialize_rules = ('-transport.transport_pets',
+    #                    '-pet.transport_pets',
+    #                    '-receiving_org.transport_pets',)
     serialize_rules = ('-transport.transport_pets',
-                       '-pet.transport_pets',
-                       '-receiving_org.transport_pets',)
+                       '-pet.transport_pets',)
 
     ## validations
 
@@ -185,6 +191,8 @@ class TransportOrganization(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     is_receiving = db.Column(db.Boolean, default=True)
+    
+    ## foreign keys
     transport_id = db.Column(db.Integer, 
                              db.ForeignKey('transports.id'), 
                              nullable=False)
