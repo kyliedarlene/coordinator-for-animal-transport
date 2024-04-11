@@ -25,6 +25,10 @@ class Pet(db.Model, SerializerMixin):
     ## serialization rules
     serialize_rules = ('-transport_pets.pet',)
 
+    ## association proxy
+    transports = association_proxy('transport_pets', 'transport',
+                                   creator=lambda transport_obj: TransportPet(transport=transport_obj))
+
     ## validations
 
     # improvement (low priority): combine checker for required fields
@@ -139,8 +143,9 @@ class Transport(db.Model, SerializerMixin):
     serialize_rules = ('-transport_pets.transport', 
                        '-transport_organizations.transport',
                        'organizations',
-                       '-organizations.transport_organizations',)
-    # serialize_rules = ('-transport_pets.transport',)
+                       '-organizations.transport_organizations',
+                       'pets',
+                       '-pets.transport_pets',)
     
     ## validations
 
@@ -161,6 +166,8 @@ class TransportPet(db.Model, SerializerMixin):
     __tablename__ = 'transport_pets'
 
     id = db.Column(db.Integer, primary_key=True)
+
+    ## foreign keys
     transport_id = db.Column(db.Integer, 
                              db.ForeignKey('transports.id'), 
                              nullable=False)

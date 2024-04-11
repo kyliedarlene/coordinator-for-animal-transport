@@ -170,7 +170,7 @@ def transport_by_id(id):
     else:
         if request.method == 'GET':
             response = make_response (
-                transport.to_dict(rules=('-transport_pets',)),
+                transport.to_dict(rules=('-transport_pets', '-transport_organizations')),
                 200
             )
         # elif request.method == 'PATCH':

@@ -15,6 +15,7 @@ function Transport({ id }) {
             .then(transport => {
                 setTransport(transport)
                 setOrganizations(transport.organizations)
+                console.log(transport)
             })
     }, [id]);
 
