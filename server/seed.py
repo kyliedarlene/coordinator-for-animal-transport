@@ -25,6 +25,31 @@ if __name__ == '__main__':
 
         print("db data deleted")
 
+        ### organizations ###
+
+        new_orgs = [
+            Organization(
+                name = "CAWS",
+                city = "Salt Lake City"
+            ),
+            Organization(
+                name = "Rescue Rovers",
+                city = "Salt Lake City"
+            ),
+            Organization(
+                name = "C.A.R.E.",
+                city = "Provo"
+            ),
+            Organization(
+                name = "Best Friends",
+                city = "Salt Lake City"
+            )
+        ]
+
+        db.session.add_all(new_orgs)
+        db.session.commit()
+        print("seeded organizations")
+
         ### pets ###
 
         new_pets = [
@@ -36,7 +61,8 @@ if __name__ == '__main__':
                 color = "tri",
                 sex = "F",
                 flight_risk = "low",
-                notes = "seems to have a paw injury"
+                notes = "seems to have a paw injury", 
+                receiving_org_id = 1
             ),
             Pet(
                 name = "Scout",
@@ -227,31 +253,6 @@ if __name__ == '__main__':
         db.session.add_all(new_pets)
         db.session.commit()
         print("seeded pets")
-
-        ### organizations ###
-
-        new_orgs = [
-            Organization(
-                name = "CAWS",
-                city = "Salt Lake City"
-            ),
-            Organization(
-                name = "Rescue Rovers",
-                city = "Salt Lake City"
-            ),
-            Organization(
-                name = "C.A.R.E.",
-                city = "Provo"
-            ),
-            Organization(
-                name = "Saving Pets",
-                city = "Mexico City"
-            )
-        ]
-
-        db.session.add_all(new_orgs)
-        db.session.commit()
-        print("seeded organizations")
 
         ### transports ###
 
