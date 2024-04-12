@@ -62,7 +62,7 @@ if __name__ == '__main__':
                 sex = "F",
                 flight_risk = "low",
                 notes = "seems to have a paw injury", 
-                receiving_org_id = 1
+                receiving_org_id = 2
             ),
             Pet(
                 name = "Scout",

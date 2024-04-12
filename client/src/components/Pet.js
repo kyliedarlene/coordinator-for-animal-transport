@@ -10,8 +10,9 @@ import {
 import PetInfo from "./PetInfo";
 import PetForm from "./PetForm";
 
-function Pet({ id, handleDeletePet }) {
+function Pet({ id, handleDeletePet, transport }) {
     const [pet, setPet] = useState({});
+    const [receivingOrg, setReceivingOrg] = useState({})
 
     const [isActive, setIsActive] = useState(false);
     const [editMode, setEditMode] = useState(false);
@@ -19,7 +20,10 @@ function Pet({ id, handleDeletePet }) {
     useEffect(() => {
       fetch(`/pets/${id}`)
         .then(r => r.json())
-        .then(pet => setPet(pet))
+        .then(pet => {
+          setPet(pet)
+          setReceivingOrg(pet.receiving_org)
+        })
     }, []);
     
     function handleUpdatePet(id, formData) {
@@ -38,18 +42,22 @@ function Pet({ id, handleDeletePet }) {
           })
   }
     
+    // set options for Receiving Organization dropdown
     const assignmentOptions = [
         {
             key: 'unassigned',
             text: 'unassigned',
             value: 'unassigned',
-        },
-        {
-            key: 'CAWS',
-            text: 'CAWS',
-            value: 'CAWS',
-        },
+        }
       ]
+
+    transport.organizations.map(org => {
+      assignmentOptions.push({
+        key: org.name,
+        text: org.name,
+        value: org.name
+      })
+    })
 
     return (
         <>
@@ -73,12 +81,13 @@ function Pet({ id, handleDeletePet }) {
                 : 
                 <PetInfo pet={pet} handleEditClick={()=> setEditMode(!editMode)} /> 
             }
+            {/* Receiving Organization */}
             <span>
                 Receiving organization: {' '}
                 <Dropdown
-                inline
-                options={assignmentOptions}
-                defaultValue={assignmentOptions[0].value}
+                  inline
+                  options={assignmentOptions}
+                  defaultValue={assignmentOptions[0].value}
                 />
             </span>
             {/* Delete Pet */}

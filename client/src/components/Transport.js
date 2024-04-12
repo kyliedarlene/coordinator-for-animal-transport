@@ -52,6 +52,7 @@ function Transport({ id }) {
         <>
         <TransportHeader transport={transport} sendingOrgs={organizations} />
         <TransportPets 
+            transport={transport}
             pets={pets} 
             handleAddPet={handleAddPet} 
             handleDeletePet={handleDeletePet} 

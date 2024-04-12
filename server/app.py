@@ -271,20 +271,20 @@ def organizations_in_transport(id):
 
 ### transport_organizations ###
 
-# @app.route('/transport_organizations', methods = ['GET', 'POST']) ## add later: POST
-# def transport_organizations():
-#     transport_organizations = [transport_organization.to_dict() 
-#                                for transport_organization 
-#                                in TransportOrganization.query.all()]
+@app.route('/transport_organizations', methods = ['GET', 'POST']) ## add later: POST
+def transport_organizations():
+    transport_organizations = [transport_organization.to_dict() 
+                               for transport_organization 
+                               in TransportOrganization.query.all()]
 
-#     if request.method == 'GET':
-#         response = make_response(
-#             transport_organizations,
-#             200
-#         )
-#     elif request.method == 'POST':
-#         pass
-#     return response
+    if request.method == 'GET':
+        response = make_response(
+            transport_organizations,
+            200
+        )
+    elif request.method == 'POST':
+        pass
+    return response
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
