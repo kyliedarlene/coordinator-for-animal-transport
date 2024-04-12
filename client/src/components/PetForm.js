@@ -23,7 +23,8 @@ function PetForm({
         // flight_risk: 'unknown',
         notes: ''
     }, 
-    handleUpdatePet 
+    handleUpdatePet,
+    transport
 }) {
     const [name, setName] = useState(pet.name)
     const [species, setSpecies] = useState(pet.species)
@@ -49,7 +50,7 @@ function PetForm({
                 // flight_risk: flightRisk,
                 notes: notes
             }
-            handleUpdatePet(pet.id, formData)
+            handleUpdatePet(pet.id, formData, transport)
             // reset state
         }
         else {

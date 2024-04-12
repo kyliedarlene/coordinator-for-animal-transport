@@ -26,7 +26,7 @@ function Pet({ id, handleDeletePet, transport }) {
         })
     }, []);
     
-    function handleUpdatePet(id, formData) {
+    function handleUpdatePet(id, formData, transport) {
       fetch(`/pets/${id}`, {
           method: 'PATCH',
           headers: {
@@ -76,7 +76,11 @@ function Pet({ id, handleDeletePet, transport }) {
             {editMode ? 
                 <>
                   {/* <Button negative>Delete Pet</Button> */}
-                  <PetForm pet={pet} handleUpdatePet={handleUpdatePet}/>
+                  <PetForm 
+                    pet={pet} 
+                    handleUpdatePet={handleUpdatePet} 
+                    transport={transport} 
+                  />
                 </>
                 : 
                 <PetInfo pet={pet} handleEditClick={()=> setEditMode(!editMode)} /> 

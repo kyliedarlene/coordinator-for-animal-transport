@@ -4,11 +4,11 @@ import { AccordionTitle, AccordionContent, Icon } from 'semantic-ui-react'
 
 import PetForm from "./PetForm";
 
-function NewPet({ handleAddPet }) {
+function NewPet({ handleAddPet, transport }) {
     const [isActive, setIsActive] = useState(false);
 
-    function handleUpdatePet(id, formData) {
-        handleAddPet(id, formData)
+    function handleUpdatePet(id, formData, transport) {
+        handleAddPet(id, formData, transport)
         setIsActive(!isActive)
     }
 
@@ -21,7 +21,7 @@ function NewPet({ handleAddPet }) {
                 {"Add Pet"}
             </AccordionTitle>
             <AccordionContent active={isActive} >
-                <PetForm handleUpdatePet={handleUpdatePet} />
+                <PetForm handleUpdatePet={handleUpdatePet} transport={transport} />
             </AccordionContent>
         </>
     )

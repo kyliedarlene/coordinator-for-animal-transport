@@ -20,7 +20,7 @@ function TransportPets({ transport, pets, handleAddPet, handleDeletePet }) {
             ))}
 
             {/* New Pet */}
-            <NewPet handleAddPet={handleAddPet} />
+            <NewPet handleAddPet={handleAddPet} transport={transport} />
 
         </Accordion>
         </>
