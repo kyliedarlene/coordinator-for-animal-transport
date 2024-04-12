@@ -36,7 +36,6 @@ function PetForm({
     const [notes, setNotes] = useState(pet.notes)
 
     // const [error, setError] = useState('')
-    
     function handleSubmit(e) {
         e.preventDefault();
         if (name && species && size) {
@@ -50,7 +49,7 @@ function PetForm({
                 // flight_risk: flightRisk,
                 notes: notes
             }
-            handleUpdatePet(pet.id, formData, transport)
+            handleUpdatePet(pet.id, formData)
             // reset state
         }
         else {

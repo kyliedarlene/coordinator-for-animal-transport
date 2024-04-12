@@ -29,9 +29,11 @@ function Transport({ id }) {
         })
             .then(r => r.json())
             .then((newPet) => {
+                // update state
                 console.log(newPet)
                 const newPets = [...pets, newPet]
                 setPets(newPets)
+
                 // add TransportPet
                 console.log(transport)
                 fetch('/transport_pets', {
