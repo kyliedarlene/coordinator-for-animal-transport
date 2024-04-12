@@ -263,7 +263,32 @@ def transport_pets():
             200
         )
     elif request.method == 'POST':
-        pass
+        try: 
+            form_data = request.get_json()
+
+            new_tp = TransportPet()
+            for attr in dir(TransportPet):
+                if attr in form_data:
+                    setattr(new_tp, attr, form_data[attr])
+
+            db.session.add(new_tp)
+            db.session.commit()
+
+            response = make_response(
+                new_tp.to_dict(rules=('-transport', '-pet',)),
+                201
+            )
+        except ValueError as e:
+            response = make_response(
+                { "errors": [str(e)] }, 
+                400
+            )
+        except: ## improvement (low-priority): make non-Value error messages more informative 
+                    # How to catch IntegrityError for NULL constraint violation?
+            response = make_response(
+                { "errors": ['Please try again.'] }, 
+                400
+            )
     return response
 
 ### transport_organizations ###
