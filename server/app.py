@@ -251,29 +251,26 @@ def organizations_in_transport(id):
 
 ### transport_pets ###
 
-# @app.route('/transport_pets', methods = ['GET', 'POST']) ## add later: POST
-# def transport_pets():
-#     transport_pets = [transport_pet.to_dict(rules=('-transport', '-pet', 'receiving_org',)) 
-#                       for transport_pet 
-#                       in TransportPet.query.all()]
+@app.route('/transport_pets', methods = ['GET', 'POST']) ## add later: POST
+def transport_pets():
+    transport_pets = [transport_pet.to_dict(rules=('-transport', '-pet',)) 
+                      for transport_pet 
+                      in TransportPet.query.all()]
 
-#     if request.method == 'GET':
-#         response = make_response(
-#             transport_pets,
-#             200
-#         )
-#     elif request.method == 'POST':
-#         pass
-#     return response
-
-# if __name__ == '__main__':
-#     app.run(port=5555, debug=True)
+    if request.method == 'GET':
+        response = make_response(
+            transport_pets,
+            200
+        )
+    elif request.method == 'POST':
+        pass
+    return response
 
 ### transport_organizations ###
 
 @app.route('/transport_organizations', methods = ['GET', 'POST']) ## add later: POST
 def transport_organizations():
-    transport_organizations = [transport_organization.to_dict() 
+    transport_organizations = [transport_organization.to_dict(rules=('-transport', '-organization',)) 
                                for transport_organization 
                                in TransportOrganization.query.all()]
 
