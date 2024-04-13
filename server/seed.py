@@ -72,6 +72,7 @@ if __name__ == '__main__':
                 color = "red",
                 sex = "F",
                 flight_risk = "low",
+                receiving_org_id = 1
             ),
             Pet(
                 name = "Ruby",
@@ -81,7 +82,8 @@ if __name__ == '__main__':
                 color = "red & white",
                 sex = "F",
                 flight_risk = "medium",
-                notes = "extremely agile, escape artist"
+                notes = "extremely agile, escape artist",
+                receiving_org_id = 3
             ),
             Pet(
                 name = "Bats",
@@ -90,6 +92,7 @@ if __name__ == '__main__':
                 breed = "chihuahua",
                 color = "black",
                 sex = "F",
+                receiving_org_id = 3
             ),
             Pet(
                 name = "Montana",
@@ -98,7 +101,8 @@ if __name__ == '__main__':
                 breed = "heeler",
                 color = "tri",
                 sex = "M",
-                notes = "anxious"
+                notes = "anxious",
+                receiving_org_id = 4
             ),
             Pet(
                 name = "Willow",
@@ -106,7 +110,8 @@ if __name__ == '__main__':
                 size = "large",
                 breed = "border collie",
                 color = "b&w",
-                sex = "F"
+                sex = "F",
+                receiving_org_id = 4
             ),
             Pet(
                 name = "Indy",
@@ -114,7 +119,8 @@ if __name__ == '__main__':
                 size = "small",
                 breed = "heeler",
                 color = "red",
-                sex = "F"
+                sex = "F",
+                receiving_org_id = 1
             ),
             Pet(
                 name = "Sen",
@@ -124,7 +130,8 @@ if __name__ == '__main__':
                 color = "grey",
                 sex = "F",
                 flight_risk = "high",
-                notes = "very scared"
+                notes = "very scared",
+                receiving_org_id = 2
             ),
             Pet(
                 name = "Beck",
@@ -133,6 +140,7 @@ if __name__ == '__main__':
                 breed = "heeler",
                 color = "tri",
                 sex = "M",
+                receiving_org_id = 2
             ),
             Pet(
                 name = "Bowie",
@@ -140,7 +148,8 @@ if __name__ == '__main__':
                 size = "medium",
                 breed = "heeler",
                 color = "black & white",
-                sex = "F"
+                sex = "F",
+                receiving_org_id = 2
             ),
             Pet(
                 name = "Nova",
@@ -148,7 +157,8 @@ if __name__ == '__main__':
                 size = "small",
                 breed = "kelpie x",
                 color = "tri",
-                sex = "F"
+                sex = "F",
+                receiving_org_id = 3
             ),
             Pet(
                 name = "Shae",
@@ -158,7 +168,8 @@ if __name__ == '__main__':
                 color = "blonde",
                 sex = "F",
                 flight_risk = "medium",
-                notes = "timid"
+                notes = "timid",
+                receiving_org_id = 1
             ),
             Pet(
                 name = "Rocket",
@@ -167,6 +178,7 @@ if __name__ == '__main__':
                 breed = "heeler",
                 color = "tri",
                 sex = "M",
+                receiving_org_id = 4
             ),
             Pet(
                 name = "Dexter",
@@ -176,7 +188,8 @@ if __name__ == '__main__':
                 color = "grey",
                 sex = "M",
                 notes = "iffy with other dogs, escape artist",
-                flight_risk = "medium"
+                flight_risk = "medium",
+                receiving_org_id = 4
             ),
             Pet(
                 name = "Toast",
@@ -185,13 +198,14 @@ if __name__ == '__main__':
                 breed = "siamese x",
                 sex = "M",
                 flight_risk = "high",
-                notes = "easily spooked"
+                notes = "easily spooked",
+                receiving_org_id = 1
             ),
             Pet(
                 name = "Maverick",
                 species = "cat",
                 size = "tiny",
-                sex = "M"
+                sex = "M",
             ),
             Pet(
                 name = "Bruce",
@@ -207,20 +221,23 @@ if __name__ == '__main__':
                 color = "grey & white",
                 sex = "F",
                 flight_risk = "high",
-                notes = "easily spooked"
+                notes = "easily spooked",
+                receiving_org_id = 1
             ),
             Pet(
                 name = "Ziggy",
                 species = "iguana",
                 size = "small",
                 sex = "M",
-                flight_risk = "low"
+                flight_risk = "low",
+                receiving_org_id = 2
             ),
             Pet(
                 name = "Lanny",
                 species = "bunny",
                 size = "tiny",
-                sex = "F"            
+                sex = "F",
+                receiving_org_id = 3           
             ),
             Pet(
                 name = "Owlbear Cub",
@@ -228,7 +245,8 @@ if __name__ == '__main__':
                 size = "huge",
                 breed = "Saint Bernard",
                 sex = "F",
-                flight_risk = "low"
+                flight_risk = "low",
+                receiving_org_id = 3
             ),
             Pet(
                 name = "Kiskar",
@@ -237,7 +255,9 @@ if __name__ == '__main__':
                 breed = "border collie",
                 color = "blue merle",
                 sex = "F",
-                notes = "bonded with Twig"
+                notes = "bonded with Twig",
+                receiving_org_id = 1
+
             ),
             Pet(
                 name = "Twig",
@@ -246,7 +266,8 @@ if __name__ == '__main__':
                 breed = "chihuahua",
                 color = "brown",
                 sex = "F",
-                notes = "bonded with Kiskar"
+                notes = "bonded with Kiskar",
+                receiving_org_id = 1
             )
         ]
 

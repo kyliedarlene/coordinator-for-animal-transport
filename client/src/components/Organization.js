@@ -5,6 +5,8 @@ import {
     AccordionContent,
     Icon,
     Segment,
+    List,
+    ListItem,
     Dropdown,
     Button
   } from 'semantic-ui-react'
@@ -12,11 +14,7 @@ import {
 function Organization({ organization, pets }) {
     const [isActive, setIsActive] = useState(false);
 
-
-    console.log(organization)
-    console.log(pets)
     const assignedPets = pets.filter((pet) => pet.receiving_org_id === organization.id)
-    console.log(assignedPets)
     
     return (
         <>
@@ -29,7 +27,9 @@ function Organization({ organization, pets }) {
             </AccordionTitle>  
             <AccordionContent active={isActive}>
                 <Segment>
-                    {assignedPets.map((pet) => pet.name)}
+                    <List>
+                        {assignedPets.map((pet) => <ListItem>{pet.name}</ListItem>)}
+                    </List>
                 </Segment>
             </AccordionContent>
         </>
