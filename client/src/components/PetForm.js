@@ -32,7 +32,7 @@ function PetForm({
     const [sex, setSex] = useState(pet.sex)
     const [breed, setBreed] = useState(pet.breed)
     const [color, setColor] = useState(pet.color)
-    const [flightRisk, setFlightRisk] = useState(pet.flight_risk)
+    // const [flightRisk, setFlightRisk] = useState(pet.flight_risk)
     const [notes, setNotes] = useState(pet.notes)
 
     // const [error, setError] = useState('')
@@ -54,6 +54,13 @@ function PetForm({
             }
             else {
                 handleUpdatePet(transport, formData)
+                // reset state
+                setName('')
+                setSpecies('')
+                setSize('')
+                setBreed('')
+                setColor('')
+                setNotes('')
             }
         }
         else {
@@ -183,14 +190,14 @@ function PetForm({
             </FormGroup>
 
             {/* flight risk */}
-            <FormSelect 
+            {/* <FormSelect 
                 id='flight-risk'
                 fluid
                 label='Flight Risk'
                 options={flightRiskOptions}
                 placeholder={flightRisk === 'unspecified' ? 'Select Flight Risk' : flightRisk}
                 onChange={(e, {value}) => {setFlightRisk(value)}}
-            />
+            /> */}
             
             {/* notes */}
             <FormTextArea 

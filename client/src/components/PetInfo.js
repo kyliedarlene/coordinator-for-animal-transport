@@ -18,7 +18,7 @@ function PetInfo({ pet, handleEditClick }) {
             <p>sex: {pet.sex}</p>
             <p>breed: {pet.breed}</p>
             <p>color: {pet.color}</p>
-            <p>flight risk: {pet.flight_risk}</p>
+            {/* <p>flight risk: {pet.flight_risk}</p> */}
             <p>notes: {pet.notes}</p>
         </Segment>
     )
