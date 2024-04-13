@@ -43,21 +43,13 @@ function Pet({ id, handleDeletePet, transport }) {
   }
     
     // set options for Receiving Organization dropdown
-    const assignmentOptions = [
-        {
-            key: 'unassigned',
-            text: 'unassigned',
-            value: 'unassigned',
-        }
-      ]
-
-    transport.organizations.map(org => {
-      assignmentOptions.push({
+    const assignmentOptions = transport.organizations.map((org) => (
+      {
         key: org.name,
         text: org.name,
         value: org.name
-      })
-    })
+      }
+    ))
 
     return (
         <>
@@ -87,11 +79,12 @@ function Pet({ id, handleDeletePet, transport }) {
             }
             {/* Receiving Organization */}
             <span>
-                Receiving organization: {' '}
+                Destined for: {' '}
                 <Dropdown
-                  inline
+                  placeholder={receivingOrg ? receivingOrg.name : "unassigned"}
+                  selection
                   options={assignmentOptions}
-                  defaultValue={assignmentOptions[0].value}
+                  onChange={(e, { value }) => console.log(value)}
                 />
             </span>
             {/* Delete Pet */}

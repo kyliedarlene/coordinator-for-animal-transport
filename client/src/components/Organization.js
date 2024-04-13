@@ -28,7 +28,7 @@ function Organization({ organization, pets }) {
             <AccordionContent active={isActive}>
                 <Segment>
                     <List>
-                        {assignedPets.map((pet) => <ListItem>{pet.name}</ListItem>)}
+                        {assignedPets.map((pet) => <ListItem key={pet.id}>{pet.name}</ListItem>)}
                     </List>
                 </Segment>
             </AccordionContent>
