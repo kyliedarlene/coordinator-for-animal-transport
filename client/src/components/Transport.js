@@ -61,6 +61,25 @@ function Transport({ id }) {
                 setPets(newPets)
             })
     }
+
+    function handleAssignReceiving(petId, orgId) {
+        fetch(`/pets/${petId}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                receiving_org_id: orgId
+            })
+        })
+            .then((r) => r.json())
+            .then((updatedPet) => {
+                const pet = pets.find((pet) => pet.id === updatedPet.id)
+                const index = pets.indexOf(pet)
+                const newPets = pets.toSpliced(index, 1, updatedPet)
+                setPets(newPets)
+            })
+      }
     
     return (
         <>
@@ -70,6 +89,7 @@ function Transport({ id }) {
             pets={pets} 
             handleAddPet={handleAddPet} 
             handleDeletePet={handleDeletePet} 
+            handleAssignReceiving={handleAssignReceiving}
         />
         <TransportOrganizations organizations={organizations} pets={pets} />
         </>

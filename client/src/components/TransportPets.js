@@ -3,7 +3,13 @@ import { Accordion } from 'semantic-ui-react'
 import Pet from "./Pet";
 import NewPet from './NewPet';
 
-function TransportPets({ transport, pets, handleAddPet, handleDeletePet }) {
+function TransportPets({ 
+    transport, 
+    pets, 
+    handleAddPet, 
+    handleDeletePet, 
+    handleAssignReceiving 
+}) {
     return (
         <>
         <h3>Pets</h3>
@@ -16,6 +22,7 @@ function TransportPets({ transport, pets, handleAddPet, handleDeletePet }) {
                     id={pet.id} 
                     handleDeletePet={handleDeletePet} 
                     transport={transport}
+                    handleAssignReceiving={handleAssignReceiving}
                 />
             ))}
 

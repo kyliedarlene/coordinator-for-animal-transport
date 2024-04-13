@@ -10,7 +10,7 @@ import {
 import PetInfo from "./PetInfo";
 import PetForm from "./PetForm";
 
-function Pet({ id, handleDeletePet, transport }) {
+function Pet({ id, handleDeletePet, handleAssignReceiving, transport }) {
     const [pet, setPet] = useState({});
     const [receivingOrg, setReceivingOrg] = useState({})
 
@@ -47,7 +47,7 @@ function Pet({ id, handleDeletePet, transport }) {
       {
         key: org.name,
         text: org.name,
-        value: org.name
+        value: org.id
       }
     ))
 
@@ -81,10 +81,10 @@ function Pet({ id, handleDeletePet, transport }) {
             <span>
                 Destined for: {' '}
                 <Dropdown
-                  placeholder={receivingOrg ? receivingOrg.name : "unassigned"}
+                  placeholder={receivingOrg ? receivingOrg.name : "Choose Organization"}
                   selection
                   options={assignmentOptions}
-                  onChange={(e, { value }) => console.log(value)}
+                  onChange={(e, { value }) => handleAssignReceiving(pet.id, value)}
                 />
             </span>
             {/* Delete Pet */}
