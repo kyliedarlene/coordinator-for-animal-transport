@@ -2,7 +2,7 @@ import Organization from "./Organization";
 
 import { Accordion } from 'semantic-ui-react'
 
-function TransportOrganizations({ organizations }) {
+function TransportOrganizations({ organizations, pets }) {
     
     // console.log(organizations)
     
@@ -14,6 +14,7 @@ function TransportOrganizations({ organizations }) {
                     <Organization 
                         key={organization.id} 
                         organization={organization} 
+                        pets={pets}
                     />
                 ))}
             </Accordion>
