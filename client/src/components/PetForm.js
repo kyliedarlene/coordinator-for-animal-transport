@@ -49,12 +49,15 @@ function PetForm({
                 // flight_risk: flightRisk,
                 notes: notes
             }
-            handleUpdatePet(pet.id, formData)
-            // reset state
+            if (pet.id) {
+                handleUpdatePet(pet.id, formData)
+            }
+            else {
+                handleUpdatePet(transport, formData)
+            }
         }
         else {
             console.log("error")
-            // setError('error')
         }
     }
     

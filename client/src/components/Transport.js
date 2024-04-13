@@ -19,7 +19,7 @@ function Transport({ id }) {
             })
     }, []);
 
-    function handleAddPet(id, formData, transport) {
+    function handleAddPet(transport, formData) {
         fetch('/pets', {
             method: 'POST',
             headers: {
@@ -43,7 +43,7 @@ function Transport({ id }) {
                     },
                     body: JSON.stringify({
                         'pet_id': newPet.id,
-                        'transport_id': 1
+                        'transport_id': transport.id
                     })
                 })
             })
