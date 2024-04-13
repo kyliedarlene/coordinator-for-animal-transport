@@ -404,6 +404,10 @@ if __name__ == '__main__':
                 transport_id = 2,
                 pet_id = 21#,
                 # receiving_org_id = 3
+            ),
+            TransportPet(
+                transport_id = 2,
+                pet_id = 16
             )
         ]
 
