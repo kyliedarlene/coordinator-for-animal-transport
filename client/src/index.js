@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import routes from "./routes.js";
+import { UserProvider } from "./context/user.js";
 
 // template provided //
 // const container = document.getElementById("root");
@@ -13,4 +14,8 @@ import routes from "./routes.js";
 
 const router = createBrowserRouter(routes);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={router} />);
+root.render(
+    <UserProvider>
+        <RouterProvider router={router} />
+    </UserProvider>
+);
