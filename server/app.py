@@ -16,7 +16,7 @@ from models import *
 def index():
     return '<h1>Project Server</h1>'
 
-### users ###
+### authentication ###
 
 class CheckSession(Resource):
     def get(self):
@@ -61,9 +61,6 @@ class Login(Resource):
             response_body = {'error': 'User not found'}
             status = 404
         else:
-            # this sends the password the user put in to the method in our
-            # user class, and which will return True if it is a match to what
-            # what is in our database--authenticating the user--or False if not
             if user.authenticate(password):
                 session['user_id'] = user.id
                 response_body = user.to_dict()
@@ -82,6 +79,14 @@ class Logout(Resource):
         return {}, 204
     
 api.add_resource(Logout, '/logout', endpoint='logout')
+
+### authorization ###
+
+allowed_endpoints = ['signup', 'login', 'check_session']
+@app.before_request
+def check_if_logged_in():
+    if not session.get('user_id') and request.endpoint not in allowed_endpoints:
+        return {'error': 'Unauthorized'}, 401
 
 ### pets ###
 
