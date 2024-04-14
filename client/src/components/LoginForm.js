@@ -1,9 +1,11 @@
 import { useState, useContext } from "react";
+import { UserContext } from "../context/user";
 import { FormField, Button, Checkbox, Form } from 'semantic-ui-react'
 
 function LoginForm() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const { user, setUser } = useContext(UserContext)
 
     function handleLogin() {
         fetch('/login', {
@@ -17,15 +19,15 @@ function LoginForm() {
             })
         })
         .then((r) => r.json())
-        .then((newUser) => {
-            console.log(newUser)
-        })
+        .then((newUser) => setUser(newUser))
     }
 
     function handleSubmit(e) {
         e.preventDefault()
         handleLogin()
     }
+
+    console.log(user)
 
     return (
         <>
