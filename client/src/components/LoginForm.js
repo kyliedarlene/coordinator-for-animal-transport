@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 
 import { FormField, Button, Checkbox, Form } from 'semantic-ui-react'
+
+import { UserProvider, UserContext } from "../context/user";
 
 function LoginForm() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const { setUser } = useContext(UserContext)
 
     console.log(email)
     console.log(password)
@@ -21,7 +24,7 @@ function LoginForm() {
             })
         })
         .then((r) => r.json())
-        .then((user) => console.log(`${user.name} logged in!`))
+        .then((user) => setUser(user))
     }
 
     function handleSubmit(e) {
@@ -32,33 +35,36 @@ function LoginForm() {
     return (
         <>
         <h2>LoginForm</h2>
-        <Form onSubmit={handleSubmit} >
-            {/* <FormField>
-            <label>Name</label>
-            <input placeholder='Name' />
-            </FormField> */}
-            <FormField>
-            <label>Email</label>
-            <input 
-                placeholder='Email' 
-                value={email}
-                onChange={(e) => {setEmail(e.target.value)}}
-            />
-            </FormField>
-            <FormField>
-            <label>Password</label>
-            <input 
-                placeholder='Password' 
-                type='password'
-                value={password}
-                onChange={(e) => {setPassword(e.target.value)}}
-            />
-            </FormField>
-            {/* <FormField>
-            <Checkbox label='I agree to the Terms and Conditions' />
-            </FormField> */}
-            <Button type='submit'>Submit</Button>
-        </Form>
+        <UserProvider>
+            <Form onSubmit={handleSubmit} >
+                {/* <FormField>
+                <label>Name</label>
+                <input placeholder='Name' />
+                </FormField> */}
+                <FormField>
+                <label>Email</label>
+                <input 
+                    placeholder='Email' 
+                    value={email}
+                    onChange={(e) => {setEmail(e.target.value)}}
+                />
+                </FormField>
+                <FormField>
+                <label>Password</label>
+                <input 
+                    placeholder='Password' 
+                    type='password'
+                    value={password}
+                    onChange={(e) => {setPassword(e.target.value)}}
+                />
+                </FormField>
+                {/* <FormField>
+                <Checkbox label='I agree to the Terms and Conditions' />
+                </FormField> */}
+                <Button type='submit'>Submit</Button>
+            </Form>
+        </UserProvider>
+        
         </>
     )
 }
