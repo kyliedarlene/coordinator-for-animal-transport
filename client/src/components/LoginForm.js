@@ -7,11 +7,32 @@ function LoginForm() {
     const [password, setPassword] = useState("")
 
     console.log(email)
+    console.log(password)
+
+    function handleLogin() {
+        fetch('/login', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        })
+        .then((r) => r.json())
+        .then((user) => console.log(`${user.name} logged in!`))
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        handleLogin()
+    }
 
     return (
         <>
         <h2>LoginForm</h2>
-        <Form>
+        <Form onSubmit={handleSubmit} >
             {/* <FormField>
             <label>Name</label>
             <input placeholder='Name' />
