@@ -33,10 +33,6 @@ function LoginForm() {
         <>
             <h2>LoginForm</h2>
             <Form onSubmit={handleSubmit} >
-                {/* <FormField>
-                <label>Name</label>
-                <input placeholder='Name' />
-                </FormField> */}
                 <FormField>
                 <label>Email</label>
                 <input 

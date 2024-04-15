@@ -1,43 +1,46 @@
 import { useState, useContext } from "react";
-
+import { UserContext } from "../context/user";
 import { FormField, Button, Checkbox, Form } from 'semantic-ui-react'
 
-import { UserProvider, UserContext } from "../context/user";
-
 function SignupForm() {
+    const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const { setUser } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
 
-    function handleLogin() {
-        fetch('/login', {
+    function handleSignup() {
+        fetch('/signup', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
+                name: name,
                 email: email,
                 password: password
             })
         })
         .then((r) => r.json())
-        .then((user) => setUser(user))
+        // .then((newUser) => setUser(newUser))
     }
 
     function handleSubmit(e) {
         e.preventDefault()
-        handleLogin()
+        handleSignup()
     }
 
     return (
         <>
-        <h2>SignupForm</h2>
-        <UserProvider>
+            <h2>SignupForm</h2>
             <Form onSubmit={handleSubmit} >
-                {/* <FormField>
+                <FormField>
                 <label>Name</label>
-                <input placeholder='Name' />
-                </FormField> */}
+                <input 
+                    placeholder='Name' 
+                    value={name}
+                    onChange={(e) => {setName(e.target.value)}}
+                />
+                </FormField>
                 <FormField>
                 <label>Email</label>
                 <input 
@@ -55,13 +58,8 @@ function SignupForm() {
                     onChange={(e) => {setPassword(e.target.value)}}
                 />
                 </FormField>
-                {/* <FormField>
-                <Checkbox label='I agree to the Terms and Conditions' />
-                </FormField> */}
                 <Button type='submit'>Submit</Button>
-            </Form>
-        </UserProvider>
-        
+            </Form>        
         </>
     )
 }
