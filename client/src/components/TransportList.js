@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from "react";
 
+import { List, ListItem } from 'semantic-ui-react'
+
+
 function TransportList() {
     const [transports, setTransports] = useState([])
     
@@ -13,11 +16,15 @@ function TransportList() {
     return (
         <>
         <h3>Transports</h3>
-        {transports.map((transport) => (
-            <Link key={transport.id} to={`/transport/${transport.id}`}>
-                {transport.title}
-            </Link>
-        ))}
+        <List>
+            {transports.map((transport) => (
+                <ListItem key={transport.id} >
+                    <Link to={`/transport/${transport.id}`}>
+                        {transport.title}
+                    </Link>
+                </ListItem>
+            ))}
+        </List>
         </>
     )
 }

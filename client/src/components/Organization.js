@@ -6,9 +6,7 @@ import {
     Icon,
     Segment,
     List,
-    ListItem,
-    Dropdown,
-    Button
+    ListItem
   } from 'semantic-ui-react'
 
 function Organization({ organization, pets }) {
