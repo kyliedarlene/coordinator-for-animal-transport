@@ -8,14 +8,22 @@ import LoginForm from "../components/LoginForm";
 import SignupForm from "../components/SignupForm";
 import LoginPage from "./LoginPage";
 
-function Home() {
+function Home({ content }) {
     const { user, setUser } = useContext(UserContext)
+
+    const display = {
+        'login': <LoginForm />,
+        'signup': <SignupForm />,
+    }
 
     return (
         <>
             <Header/>
             <h1>Home</h1>
-            {user ? user : <LoginForm /> }
+            {user ? 
+                `Welcome, ${user.name}!` : 
+                display[content]
+            }
         </>
     )
 }

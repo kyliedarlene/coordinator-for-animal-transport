@@ -31,7 +31,6 @@ function LoginForm() {
 
     return (
         <>
-            <h2>LoginForm</h2>
             <Form onSubmit={handleSubmit} >
                 <FormField>
                 <label>Email</label>
@@ -54,6 +53,7 @@ function LoginForm() {
                 <Checkbox label='I agree to the Terms and Conditions' />
                 </FormField> */}
                 <Button type='submit'>Submit</Button>
+                <p>Need to make an account? Sign up <a href='/' >here</a>.</p>
             </Form>        
         </>
     )
