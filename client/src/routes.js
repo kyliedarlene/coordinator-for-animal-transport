@@ -1,5 +1,5 @@
 import Dashboard from "./pages/Dashboard";
-import LoginPage from "./pages/LoginPage";
+import Home from "./pages/Home";
 import TransportPage from "./pages/TransportPage";
 
 // later: add '/' and conditional logic for logged-in users
@@ -7,7 +7,7 @@ import TransportPage from "./pages/TransportPage";
 const routes = [
     {
         path: '/', 
-        element: <LoginPage />,
+        element: <Home />,
     },
     {
         path: '/transport/:id',
