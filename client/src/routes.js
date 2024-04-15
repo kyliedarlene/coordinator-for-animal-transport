@@ -10,14 +10,6 @@ const routes = [
         element: <Home />,
     },
     {
-        path: '/login', 
-        element: <Home content={'login'} />,
-    },
-    {
-        path: '/signup', 
-        element: <Home content={'signup'} />,
-    },
-    {
         path: '/transport/:id',
         element: <TransportPage />,
     },

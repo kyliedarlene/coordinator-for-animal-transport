@@ -7,14 +7,10 @@ import Dashboard from "./Dashboard";
 import LoginForm from "../components/LoginForm";
 import SignupForm from "../components/SignupForm";
 import LoginPage from "./LoginPage";
+import Authentication from "../components/Authentication";
 
-function Home({ content }) {
+function Home() {
     const { user, setUser } = useContext(UserContext)
-
-    const display = {
-        'login': <LoginForm />,
-        'signup': <SignupForm />,
-    }
 
     return (
         <>
@@ -22,7 +18,7 @@ function Home({ content }) {
             <h1>Home</h1>
             {user ? 
                 `Welcome, ${user.name}!` : 
-                display[content]
+                <Authentication/>
             }
         </>
     )

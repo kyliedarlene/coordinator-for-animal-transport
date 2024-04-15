@@ -27,8 +27,6 @@ function LoginForm() {
         handleLogin()
     }
 
-    console.log(user)
-
     return (
         <>
             <Form onSubmit={handleSubmit} >
@@ -53,7 +51,7 @@ function LoginForm() {
                 <Checkbox label='I agree to the Terms and Conditions' />
                 </FormField> */}
                 <Button type='submit'>Submit</Button>
-                <p>Need to make an account? Sign up <a href='/' >here</a>.</p>
+            
             </Form>        
         </>
     )
