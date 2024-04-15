@@ -6,7 +6,6 @@ function Dashboard({ content }) {
     return (
         <>
             <Header/>
-            <h1>Dashboard</h1>
             <SideMenu activeItem={content}/>
             <DashContent content={content}/>
         </>
