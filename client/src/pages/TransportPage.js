@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 
 import Transport from "../components/Transport";
+import Header from "../components/Header";
 
 function TransportPage() {
     const params = useParams();
@@ -8,6 +9,7 @@ function TransportPage() {
     
     return (
         <>
+        <Header/>
         <Transport id={id} />
         </>
     )
