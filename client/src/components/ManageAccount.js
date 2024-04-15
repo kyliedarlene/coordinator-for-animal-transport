@@ -15,7 +15,7 @@ function ManageAccount() {
     
     return (
         <>
-        <h3>ManageAccount</h3>
+        <h3>Manage Account</h3>
         <Button onClick={handleLogout} > Log Out </Button>
         </>
     )

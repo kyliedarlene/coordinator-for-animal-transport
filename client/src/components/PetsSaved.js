@@ -1,10 +1,17 @@
+import { useState, useEffect } from "react";
+
 function PetsSaved() {
-    // will add fetch later
-    const num = 100;
+    const [pets, setPets] = useState([])
+
+    useEffect(() => {
+        fetch('/pets')
+            .then((r) => r.json())
+            .then((pets) => setPets(pets))
+    }, []);
 
     return (
         <>
-        <h3>You've helped save {num} pets through your transports!</h3>
+        <h3>You've helped save {pets.length} pets through your transports!</h3>
         </>
     )
 }
