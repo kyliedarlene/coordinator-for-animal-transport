@@ -11,6 +11,7 @@ function ManageAccount() {
         fetch('/logout', {
             method: 'DELETE',
         })
+            .then(() => setUser({}))
     }
     
     return (
