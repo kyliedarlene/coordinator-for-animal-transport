@@ -6,7 +6,7 @@ import TransportPage from "./pages/TransportPage";
 
 const routes = [
     {
-        path: '/login', 
+        path: '/', 
         element: <LoginPage />,
     },
     {
