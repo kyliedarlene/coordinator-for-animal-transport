@@ -21,7 +21,7 @@ function SignupForm() {
             })
         })
         .then((r) => r.json())
-        // .then((newUser) => setUser(newUser))
+        .then((newUser) => setUser(newUser))
     }
 
     function handleSubmit(e) {
@@ -31,7 +31,6 @@ function SignupForm() {
 
     return (
         <>
-            <h2>SignupForm</h2>
             <Form onSubmit={handleSubmit} >
                 <FormField>
                 <label>Name</label>
