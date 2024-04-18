@@ -5,13 +5,16 @@ import { UserContext } from "../context/user";
 
 function ManageAccount() {
     const navigate = useNavigate();
-    const { setUser } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
+
+    const [loggedIn, setLoggedIn] = useState(true)
 
     function handleLogout() {
         fetch('/logout', {
             method: 'DELETE',
         })
             .then(() => setUser({}))
+            .then(() => console.log(user))
     }
     
     return (
